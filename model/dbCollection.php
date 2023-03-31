@@ -1,7 +1,6 @@
 <?php
-
 // INDICANDO AO COMPOSER PARA SER EXECUTADO NO ARQUIVO
-require = 'vendor/autoload.php';
+require 'vendor/autoload.php';
 
 // REFERENCIANDO O LINK DA CONEXAO COM O MONGODB
 $client = new MongoDB\Client("mongodb://localhost:27017");
