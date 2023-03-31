@@ -8,3 +8,7 @@ Status do Projeto: Em desenvolvimento...
     <li>Tutorial de Instalação MONGODB + PHP - https://www.youtube.com/watch?v=JHZ3LMOp-s4</li>
     <li>Composer - https://getcomposer.org/download/
   </ul>
+
+  
+  Referencias:
+  - MongoDB + PHP connection: https://www.youtube.com/watch?v=WFrZB1Zr6lo
