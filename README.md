@@ -1,4 +1,4 @@
-<h1>Aplicação Web para um Petshops</h1>
+<h1>Aplicação Web para um Petshop</h1>
 Status do Projeto: Em desenvolvimento...
 
 <h2>Instalações obrigatórias para o funcionamento do projeto<h2>
