@@ -11,4 +11,5 @@ Status do Projeto: Em desenvolvimento...
 
   
   Referencias:
+  - Exemplo de comandos PHP+MONGODB: https://pt.slideshare.net/suissapg/curso-mongo-db-com-php-13533409
   - MongoDB + PHP connection: https://www.youtube.com/watch?v=WFrZB1Zr6lo
