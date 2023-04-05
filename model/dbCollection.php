@@ -25,5 +25,3 @@ var_dump($mongo);
 }
 
 ?>
-
-?>
