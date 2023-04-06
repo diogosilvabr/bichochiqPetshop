@@ -1,29 +1,21 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
-
+// Arquivo de conexão com o banco
+require '../vendor/autoload.php'; // Dependência do MongoDB
+// Importa as classes necessárias do MongoDB
 use MongoDB\Client;
+use MongoDB\Database;
 
-$cliente = new MongoDB\Client("mongodb://localhost:27017");
-$bancoDados = $cliente->bicho_chique;
-$colecao = $bancoDados->produtos;
+// Configurações de conexão com o MongoDB
+$mongoDBUri = "mongodb://localhost:27017"; // URI de conexão do MongoDB
+$mongoDBNome = "bichochique_db"; // Nome do seu banco de dados MongoDB
+$mongoDBColecao = "produtos"; // Nome da coleção onde os dados dos produtos são armazenados
 
+// Cria uma instância do cliente do MongoDB
+$cliente = new Client($mongoDBUri);
 
+// Seleciona o banco de dados
+$bancoDeDados = $cliente->selectDatabase($mongoDBNome);
 
-// Função para excluir um produto
-function excluirProduto($idProduto) {
-    global $colecao;
-    $resultado = $colecao->deleteOne(['_id' => new MongoDB\BSON\ObjectID($idProduto)]);
-    return $resultado;
-}
-
-// Exemplo de uso das funções
-$idProduto = "123456789012345678901234"; // ID do produto a ser editado ou excluído
-$dadosProduto = [
-    'nome' => 'Produto X',
-    'preco' => 9.99,
-    'descricao' => 'Descrição do produto X'
-]; // Dados do produto a ser cadastrado ou editado
-
-$resultado = excluirProduto($idProduto); // Excluir um produto existente
-
+// Seleciona a coleção
+$colecao = $bancoDeDados->selectCollection($mongoDBColecao);
 ?>

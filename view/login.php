@@ -22,8 +22,8 @@
             <?php } ?>
 
         <input type="submit" value="Concluir">   
+        <?php header('Location:../view/dashboard.php') ?>
     </form>
-
 
 
 <?php include("blades/footer.php"); ?>
