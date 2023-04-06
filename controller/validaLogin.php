@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // verifica se a autenticação foi realizada
 $usuarioAutenticado = false;
 
@@ -25,7 +27,9 @@ foreach($usuariosPetshop as $user) {
 // verifica e retorna se o usuário está autenticado ou exibe erro se não estiver
 if($usuarioAutenticado) {
     echo ' Usuário autenticado!';
+    $_SESSION['autenticado'] = 'SIM';
 } else {
+    $_SESSION['autenticado'] = 'NÃO';
     header('Location:../view/formLogin.php?login=erro');
 }
 

@@ -15,7 +15,6 @@
 
             <? } ?>
 
-        <input type="hidden" name="nivelAcesso" value="1">
         <input type="submit" value="Concluir">   
     </form>
 
