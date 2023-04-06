@@ -8,7 +8,6 @@
         <label>Senha</label>
         <input type="text" name="passwordCliente"><br>
 
-    
             <? if(isset($_GET['login']) && $_GET['login'] == 'erro') { ?>
 
             <!-- mensagem de erro no form referente autenticação do usuário -->    
