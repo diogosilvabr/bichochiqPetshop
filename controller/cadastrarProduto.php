@@ -13,7 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	    'descricao' => $descricao
 	];
 
-	$resultado = cadastrarProduto($dadosProduto);
+	function cadastrarProduto($dadosProduto) {
+		global $colecao;
+		$resultado = $colecao->insertOne($dadosProduto);
+		return $resultado;
+	}
+
+	$resultado = cadastrarProduto($dadosProduto); // Cadastrar um novo produto
 
 	if ($resultado->getInsertedCount() == 1) {
 		echo "Produto cadastrado com sucesso!";
