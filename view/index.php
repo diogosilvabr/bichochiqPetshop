@@ -2,7 +2,7 @@
 include("blades/header.php");
 ?>
 
-<h1>bem vindo!</h1>
+<h1>bem vindo ao Petshop!</h1>
 
 <a href="login.php">LOGIN</a>	
 

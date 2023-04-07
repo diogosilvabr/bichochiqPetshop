@@ -9,7 +9,6 @@ $usuariosPetshop = array(
     array('email' => 'admin@bichochique.com', 'senha' => 'admin'),
     array('email' => 'cliente@test.com', 'senha' => 'cliente'),
 );
-
 // percorre a array usuariosPetshop e verifica se o usuário/senha cadastrado é igual ao escrito no form de login
 foreach($usuariosPetshop as $user) {
     if($user['email'] == $_POST['emailCliente'] && $user['senha'] == $_POST['passwordCliente']) {
@@ -18,7 +17,6 @@ foreach($usuariosPetshop as $user) {
 
     }
 }
-
 // verifica e retorna se o usuário está autenticado ou exibe erro se não estiver
 if($usuarioAutenticado) {
     echo ' Usuário autenticado!';
