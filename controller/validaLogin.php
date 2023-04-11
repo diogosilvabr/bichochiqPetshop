@@ -20,8 +20,15 @@ foreach($usuariosPetshop as $user) {
 // verifica e retorna se o usuário está autenticado ou exibe erro se não estiver
 if($usuarioAutenticado) {
     echo ' Usuário autenticado!';
+    header('Location:../view/dashboard.php');
     $_SESSION['autenticado'] = 'SIM';
 } else {
     $_SESSION['autenticado'] = 'NÃO';
     header('Location:../view/login.php?login=erro');
+}
+
+// VALIDA O BOTÃO DE LOGOFF DO DASHBOARD PARA ENCERRAR A SESSÃO E FAZER LOG OUT
+if(isset($_POST['logoff'])) {
+    session_destroy();
+    header("Location: ../view/login.php");
 }
