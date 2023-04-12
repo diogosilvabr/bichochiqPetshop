@@ -4,15 +4,24 @@ use MongoDB\Driver\Manager;
 use MongoDB\BSON\ObjectId;
 use MongoDB\Driver\Exception\Exception;
 
-function criarProduto($nome, $preco, $descricao, $tamanho, $quantidade)
-{
+function criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especies, $categoria)
+{   
     global $colecao;
+    
+    // Verifica se $especies é um array
+    if (is_array($especies)) {
+        // Converte o array em uma string com vírgulas entre os valores
+        $especies = implode(',', $especies);
+    }
+    
     $produto = array(
         "nome" => $nome,
         "preco" => $preco,
         "descricao" => $descricao,
         "tamanho" => $tamanho,
-        "quantidade" => $quantidade
+        "quantidade" => $quantidade,
+        "especie" => $especies,
+        "categoria" => $categoria
     );
     $resultado = $colecao->insertOne($produto);
     return $resultado->getInsertedId();
@@ -22,7 +31,13 @@ function buscarProdutoPorNome($nome)
 {
     try {
         $manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
-        $filter = ['nome' => $nome];
+        $filter = [
+            '$or' => [
+                ['nome' => ['$regex' => new MongoDB\BSON\Regex($nome, 'i')]],
+                ['categoria' => ['$regex' => new MongoDB\BSON\Regex($nome, 'i')]],
+                ['especie' => ['$regex' => new MongoDB\BSON\Regex($nome, 'i')]]
+            ]
+        ];
         $query = new MongoDB\Driver\Query($filter);
         $cursor = $manager->executeQuery('bichochique_db.produtos', $query);
         $data = [];
@@ -35,8 +50,7 @@ function buscarProdutoPorNome($nome)
     }
 }
 
-
-function atualizarProduto($id, $nome, $preco, $descricao, $quantidade, $tamanho)
+function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade, $especie, $categoria)
 {
     global $colecao;
     $atualizacao = array(
@@ -45,7 +59,9 @@ function atualizarProduto($id, $nome, $preco, $descricao, $quantidade, $tamanho)
             "preco" => $preco,
             "descricao" => $descricao,
             "tamanho" => $tamanho,
-            "quantidade" => $quantidade
+            "quantidade" => $quantidade,
+            "especie" => $especie,
+            "categoria" => $categoria
         )
     );
     $resultado = $colecao->updateOne(["_id" => new MongoDB\BSON\ObjectId($id)], $atualizacao);
@@ -55,7 +71,13 @@ function atualizarProduto($id, $nome, $preco, $descricao, $quantidade, $tamanho)
 function deletarProduto($id)
 {
     global $colecao;
-    $resultado = $colecao->deleteOne(["_id" => new MongoDB\BSON\ObjectId($id)]);
-    return $resultado->getDeletedCount();
+    if(!empty($id)) {
+        $resultado = $colecao->deleteOne(["_id" => new MongoDB\BSON\ObjectId($id)]);
+        return $resultado->getDeletedCount();
+    } else {
+        // Caso a variável $id esteja vazia
+        return 0;
+    }
 }
+
 ?>
