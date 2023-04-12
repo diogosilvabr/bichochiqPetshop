@@ -1,0 +1,35 @@
+{
+  "A": [
+    {
+      "nome": "Arroz"
+    },
+    {
+      "nome": "Abacaxi"
+    },
+    {
+      "nome": "Amendoim"
+    }
+  ],
+  "B": [
+    {
+      "nome": "Banana"
+    },
+    {
+      "nome": "Batata"
+    },
+    {
+      "nome": "Biscoito"
+    }
+  ],
+  "C": [
+    {
+      "nome": "Café"
+    },
+    {
+      "nome": "Cebola"
+    },
+    {
+      "nome": "Cenoura"
+    }
+  ]
+}

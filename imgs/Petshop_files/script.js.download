@@ -1,0 +1,20 @@
+const card = document.querySelector('.card');
+const infoCard = document.querySelector('.info-card');
+const sobreCard = document.querySelector('.sobre-card');
+const infoCarrinho = document.querySelector('#infoCarrinho');
+
+card.addEventListener('mouseenter', () => {
+    sobreCard.classList.remove('efeito-desce-info');
+    sobreCard.classList.add('efeito-sobe-info');
+    infoCard.style.display = 'none';
+    infoCarrinho.style.display = "flex";
+    console.log('ola');
+});
+
+card.addEventListener('mouseleave', () => {
+    sobreCard.classList.remove('efeito-sobe-info');
+    sobreCard.classList.add('efeito-desce-info');
+    infoCard.style.display = 'block';
+    infoCarrinho.style.display = "none";
+    console.log('tchau');
+});
