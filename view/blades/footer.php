@@ -1,4 +1,2 @@
 </head>
 </body>
-
-<?php ?>

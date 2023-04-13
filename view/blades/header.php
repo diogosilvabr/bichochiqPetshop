@@ -8,5 +8,3 @@
 </head>
 <body>
 
-<?php ?>
-
