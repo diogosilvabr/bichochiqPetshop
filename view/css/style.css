@@ -107,6 +107,12 @@ li {
 /*******************************
     0.1 SEARCH
 ********************************/
+.search-nav {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
 .search {
     min-height: 9.2rem;
     background-color: var(--azul);
@@ -288,7 +294,7 @@ li {
 
 .container-navbar {
     width: 100%;
-    max-width: 100rem;
+    max-width: 90rem;
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -1078,9 +1084,6 @@ li {
 .limit {
     padding-right: max(calc((100vw - 124.5rem)/2 + max(3%, 2rem)), 2rem)
 }
-
-.footer
-
 
 
 
