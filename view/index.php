@@ -1,11 +1,9 @@
 <?php
 include("blades/header.php");
 ?>
-    
 
+<h1>bem vindo ao Petshop!</h1>
 
+<a href="login.php">LOGIN</a>	
 
-
-<?php
-include("blades/footer.php");
-?>
+<? include('blades/footer.php'); ?>
