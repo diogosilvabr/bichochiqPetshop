@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("blades/header.php");
 include("blades/session.php");
 
@@ -7,19 +7,20 @@ require '../model/database.php';
 require '../controller/crudProdutos.php';
 
 // Função para limpar entrada do usuário
-function limparEntrada($entrada) {
-    if (is_array($entrada)) {
-        // se a entrada for um array, cria um novo array para armazenar os valores limpos
-        $saida = array();
-        foreach ($entrada as $chave => $valor) {
-            // remove espaços em branco no início e no fim da string
-            $saida[$chave] = is_string($valor) ? trim($valor) : $valor;
-        }
-        return $saida;
-    } else {
-        // se a entrada não for um array, remove espaços em branco no início e no fim da string
-        return is_string($entrada) ? trim($entrada) : $entrada;
-    }
+function limparEntrada($entrada)
+{
+	if (is_array($entrada)) {
+		// se a entrada for um array, cria um novo array para armazenar os valores limpos
+		$saida = array();
+		foreach ($entrada as $chave => $valor) {
+			// remove espaços em branco no início e no fim da string
+			$saida[$chave] = is_string($valor) ? trim($valor) : $valor;
+		}
+		return $saida;
+	} else {
+		// se a entrada não for um array, remove espaços em branco no início e no fim da string
+		return is_string($entrada) ? trim($entrada) : $entrada;
+	}
 }
 ?>
 
@@ -31,13 +32,13 @@ function limparEntrada($entrada) {
 </form>
 
 <h2>Cadastrar Produto</h2>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
 	<label>Nome do Produto:</label><br>
 	<input type="text" name="nome"><br>
 	<label>Preço do Produto:</label><br>
 	<input type="text" name="preco"><br>
 	<label>Descrição do Produto:</label><br>
-	<textarea name="descricao"></textarea><br>	
+	<textarea name="descricao"></textarea><br>
 	<label>Tamanho:</label><br>
 	<input type="text" name="tamanho"><br>
 	<label>Quantidade do Produto:</label><br>
@@ -56,6 +57,8 @@ function limparEntrada($entrada) {
 		<option value="brinquedos">BRINQUEDOS</option>
 		<option value="cuidados">CUIDADOS</option>
 	</select>
+	<label>Imagem do Produto:</label><br>
+	<input type="file" name="imagem"><br>
 	<br><br><input type="submit" name="cadastrar" value="Cadastrar">
 </form>
 
@@ -93,37 +96,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			echo "Resultado da busca:<br>";
 			foreach ($resultadoBusca as $produto) {
 				echo "<table border='1'>";
-				echo 	"<thead>";
-				echo 		"<tr>";
-				echo 			"<th>ID</th>";
-				echo 			"<th>Nome</th>";
-				echo 			"<th>Preço</th>";
-				echo 			"<th>Descrição</th>";
-				echo 			"<th>Tamanho</th>";
-				echo 			"<th>Quantidade</th>";
-				echo 			"<th>Espécie</th>";
-				echo 			"<th>Categoria</th>";
-				echo 			"<th>Opções</th>";
-				echo		"</tr>";
-				echo	"</thead>";
-				echo	"<tbody>";
-				echo		"<tr>";
-				echo			"<td>" . $produto['_id'] . "</td>";									
-				echo			"<td>" . $produto['nome'] . "</td>";									
-				echo			"<td>" . $produto['preco'] . "</td>";									
-				echo			"<td>" . $produto['descricao'] . "</td>";									
-				echo			"<td>" . $produto['tamanho'] . "</td>";									
-				echo			"<td>" . $produto['quantidade'] . "</td>";								
-				echo			"<td>" . $produto['especie'] . "</td>";								
-				echo			"<td>" . $produto['categoria'] . "</td>";								
-				echo			"<td>";
-				echo			"<form method='post' action='". htmlspecialchars($_SERVER["PHP_SELF"])."'>";
-				echo			"<input type='number' name='id' value='".$produto['_id']."'>";
-				echo 			"<input type='submit' name='excluir' value='Excluir'>";
-				echo			"</form>";
-				echo			"</td>";								
-				echo 		"</tr>";									
-				echo 	"</tbody>";									
+				echo "<thead>";
+				echo "<tr>";
+				echo "<th>ID</th>";
+				echo "<th>Nome</th>";
+				echo "<th>Preço</th>";
+				echo "<th>Descrição</th>";
+				echo "<th>Tamanho</th>";
+				echo "<th>Quantidade</th>";
+				echo "<th>Espécie</th>";
+				echo "<th>Categoria</th>";
+				echo "<th>Opções</th>";
+				echo "</tr>";
+				echo "</thead>";
+				echo "<tbody>";
+				echo "<tr>";
+				echo "<td>" . $produto['_id'] . "</td>";
+				echo "<td>" . $produto['nome'] . "</td>";
+				echo "<td>" . $produto['preco'] . "</td>";
+				echo "<td>" . $produto['descricao'] . "</td>";
+				echo "<td>" . $produto['tamanho'] . "</td>";
+				echo "<td>" . $produto['quantidade'] . "</td>";
+				echo "<td>" . $produto['especie'] . "</td>";
+				echo "<td>" . $produto['categoria'] . "</td>";
+				echo "<td>";
+				echo "<form method='post' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "'>";
+				echo "<input type='number' name='id' value='" . $produto['_id'] . "'>";
+				echo "<input type='submit' name='excluir' value='Excluir'>";
+				echo "</form>";
+				echo "</td>";
+				echo "</tr>";
+				echo "</tbody>";
 				echo "</table>";
 				echo "<br>";
 			}
@@ -142,9 +145,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$quantidade = limparEntrada($_POST["quantidade"]);
 		$especie = limparEntrada($_POST["especie"]);
 		$categoria = limparEntrada($_POST["categoria"]);
+		$nomeImagem = '';
+
+		// Verifica se foi enviado um arquivo de imagem
+		if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] == 0) {
+			$nomeImagem = $_FILES['imagem']['name'];
+			$extensao = pathinfo($nomeImagem, PATHINFO_EXTENSION);
+			$destino = 'images/' . $nomeImagem;
+
+			// Verifica se o arquivo é uma imagem válida
+			$extensoesPermitidas = array('jpg', 'jpeg', 'png', 'gif');
+			if (in_array(strtolower($extensao), $extensoesPermitidas)) {
+				if (move_uploaded_file($_FILES['imagem']['tmp_name'], $destino)) {
+					// arquivo movido com sucesso
+				} else {
+					$nomeImagem = '';
+					// Tratar erro de movimentação do arquivo
+				}
+			} else {
+				// Tratar erro de tipo de arquivo inválido
+			}
+		} else {
+			// Tratar erro de arquivo não enviado
+		}
 
 		if (isset($_POST["cadastrar"])) {
-			$idProduto = criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especie, $categoria);
+			$idProduto = criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especie, $categoria, $nomeImagem);
 			if ($idProduto) {
 				echo "Produto cadastrado com sucesso. ID do Produto: " . $idProduto;
 			} else {
