@@ -49,8 +49,6 @@ cards.forEach((card) => {
   const nomeProduto = card.querySelector(".sobre-produto").textContent;
   const precoParcelas = card.querySelector(".parcelas").textContent;
   const precoAvista = card.querySelector(".preco-avista");
-  const precoAvistaConvert = parseFloat(precoAvista.textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
-  const precoFormatado = precoAvistaConvert.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const addProduto = card.querySelector(".adicionar-produto");
 
   botaoCarrinho.addEventListener("click", () => {
@@ -69,24 +67,20 @@ cards.forEach((card) => {
   // ao clicar no botao de confirmar compra - retorna os dados no console.log
   const confirmarCompra = card.querySelector(".confirmar-compra");
   let subtotal = 0;
+
   confirmarCompra.addEventListener("click", () => {
     const tamanhoSelecionado = card.querySelector('input[name="tamanho"]:checked');
     const quantidadeSelecionada = card.querySelector(".input-quantity").value;
     const imageProduto = card.querySelector(".img-produto").getAttribute("src");
+    const precoAvistaConvert = parseFloat(precoAvista.textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
+    const precoFormatado = precoAvistaConvert.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     if (tamanhoSelecionado) {
-      // console.log("Tamanho selecionado: " + tamanhoSelecionado.value);
-      // console.log("Nome do Produto:", nomeProduto);
-      // console.log("Preço do Produto:", precoAvistaConvert);
-      // console.log(`Quantidade selecionada: ${quantidadeSelecionada}`);
-      // console.log("------------------------------------");
-
-      // ao clicar em confirmar: feche o card
       const selectedProducts = document.querySelector(".selected-products");
       selectedProducts.style.display = "flex";
       const totalPrice = quantidadeSelecionada * precoAvistaConvert;
 
-      // mostrar dentro do produto a lista do nome do produto clicado
+      // mostrar dentro do carrinho a lista com infos do produto clicado
       const selectedProductsInfo = document.querySelector(".selected-products__infos");
       selectedProductsInfo.innerHTML += `
         <div class="product-info">
@@ -100,7 +94,7 @@ cards.forEach((card) => {
                   <span class="product-code">Code: 1</span>
               </div>
               <div class="product-price">
-                  <div class="price">${quantidadeSelecionada} x R$${precoFormatado} = <span>R$${(totalPrice).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></div>
+                  <div class="price">${quantidadeSelecionada} x R$${precoFormatado} = <span id="priceSubtotal">R$${(totalPrice).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></div>
                   <button class="remove-product">
                       <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M11.5 0C5.152 0 0 5.152 0 11.5C0 17.848 5.152 23 11.5 23C17.848 23 23 17.848 23 11.5C23 5.152 17.848 0 11.5 0ZM16.1 12.65H6.9C6.2675 12.65 5.75 12.1325 5.75 11.5C5.75 10.8675 6.2675 10.35 6.9 10.35H16.1C16.7325 10.35 17.25 10.8675 17.25 11.5C17.25 12.1325 16.7325 12.65 16.1 12.65Z" fill="white"/>
@@ -112,12 +106,11 @@ cards.forEach((card) => {
       `;
 
       const selectedProcutsSubtotal = document.querySelector('.selected-products__subtotal');
-      const priceSubtotal = document.querySelectorAll('.price > span');
+      const priceSubtotal = document.querySelectorAll('#priceSubtotal');
 
       priceSubtotal.forEach((price) => {
-        let priceValue = parseFloat(price.textContent.replace(/[^\d.,]/g, '').replace('.', ','));
+        let priceValue = parseFloat(price.textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
         subtotal += priceValue;
-        console.log(subtotal, '=', totalPrice);
       });
 
       selectedProcutsSubtotal.innerHTML = `
@@ -147,13 +140,13 @@ cards.forEach((card) => {
 
       removeButtons.forEach((removeButton) => {
         removeButton.addEventListener("click", (e) => {
-          const productInfo = e.target.closest(".product-info");
-          const productPrice = document.querySelector('.product-price > .price > span');
+          
+          const parentButton = removeButton.parentElement;
+          const valueParentButton = parentButton.querySelector('.price > span');
+          let valueButtonFloat = parseFloat(valueParentButton.textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
 
-          productPrice.forEach((price) => {
-            let priceValue = parseFloat(price.textContent.replace(/[^\d.,]/g, '').replace(',', '.'));
-            priceValue -= subtotal;
-          });
+          const productInfo = e.target.closest(".product-info");
+          subtotal -= valueButtonFloat;
     
           selectedProcutsSubtotal.innerHTML = `
             <div class="subtotal-price">Subtotal: <span>R$${subtotal.toFixed(2)}</span></div>
@@ -183,6 +176,7 @@ cards.forEach((card) => {
             }, 500);
           }
         });
+
       });
 
       const selectedProductsButton = document.querySelector(".selected-products__button");
