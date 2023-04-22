@@ -40,6 +40,7 @@ li {
     --preto80Op: #2323233a;
     --pretoPuro: #000000;
 
+    --shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
     --transition: .3s ease all;
 }
 
@@ -52,7 +53,7 @@ li {
     align-items: center;
     text-align: center;
     justify-content: center;
-    padding-bottom: 5rem;
+    padding: 0 2rem 5rem 2rem;
 }
 
 .dashed-title {
@@ -69,7 +70,6 @@ li {
     font-size: 4rem;
     line-height: 5.4rem;
     color: var(--amareloOuro);
-    /* border-top: .2rem dashed var(--cinza); */
 }
 
 .title-about h1 span {
@@ -104,6 +104,270 @@ li {
     background-color: var(--azul) !important;
 }
 
+.menu-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+    z-index: 2;
+}
+
+.menu-screen.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0s;
+}
+
+.active-menu {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0s;
+}
+
+@keyframes open-products-selected {
+    0% {
+        right: -40rem;
+    }
+
+    100% {
+        right: 0%;
+    }
+}
+
+@keyframes close-products-selected {
+    0% {
+        right: 0%;
+    }
+
+    100% {
+        right: -40rem;
+    }
+}
+
+.selected-products {
+    display: none;
+    position: fixed;
+    top: 30%;
+    right: -40rem;
+    align-items: center;
+    z-index: 2;
+}
+
+.selected-products__button {
+    width: 6rem;
+    height: 31rem;
+    background-color: var(--azul);
+    z-index: 2;
+    border-radius: .5rem 0 0 .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selected-products__list {
+    width: 40rem;
+    height: 50rem;
+    background-color: var(--branco);
+    border-radius: .5rem 0 0 .5rem;
+}
+
+.selected-products__title {
+    width: 100%;
+    height: 8.4rem;
+    display: flex;
+    align-items: center;
+    border-bottom: .1rem solid var(--cinzaSombra);
+    padding: 2rem;
+}
+
+.selected-products__title h1 {
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 4.3rem;
+    color: var(--preto80);
+}
+
+.selected-products__infos {
+    width: 100%;
+    height: calc(100% - (8.4rem + 9.4rem));
+    overflow-y: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: .2rem solid var(--preto80Op);
+    padding-bottom: 1rem;
+}
+
+.product-info__img {
+    min-width: 7rem;
+    height: 7rem;
+}
+
+.product-info__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.product-info__about {
+    width: 100%;
+    height: 7rem;
+}
+
+.product__nome-code {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    color: var(--preto80);
+}
+
+.product-code {
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    color: var(--preto80);
+}
+
+.product-price {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    padding: 1rem;
+    background-color: var(--azul);
+    border-radius: .5rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    color: var(--preto80);
+}
+
+.price span {
+    color: var(--branco);
+    font-weight: bold;
+}
+
+.remove-product {
+    background-color: var(--azul);
+    border: 0;
+    outline: 0;
+    padding: 0.5rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selected-products__subtotal {
+    width: 100%;
+    height: 9.4rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.subtotal-price {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 1.8rem;
+}
+
+.subtotal-price span {
+    font-weight: 900;
+}
+
+.subtotal-price__finalize {
+    width: 100%;
+    height: 5rem;
+    background-color: var(--azul);
+    border-radius: .5rem;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    border: 0;
+    outline: 0;
+
+    font-weight: 800;
+    font-size: 1.6rem;
+    line-height: 2.2rrem;
+    color: var(--branco);
+    cursor: pointer;
+}
+
+.subtotal-price__finalize svg { 
+    width: 3rem;
+    height: 3rem;
+}
+
+
+/*******************************
+    0.0.1 NAVBAR
+********************************/
+.nav-space {
+    width: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.search-navbar__desktop {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-navbar__mobile {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+}
+
+
+.logo {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    padding-left: max(calc((100vw - 400.5rem)/2 + max(3%, 2rem)), 2rem);
+    flex: 1;
+}
+
+.logo__mobile {
+    width: 10rem;
+    height: 10rem;
+    z-index: 1;
+}
+
+.logo__mobile svg {
+    width: 10rem;
+    height: 10rem;
+}
+
 /*******************************
     0.1 SEARCH
 ********************************/
@@ -113,36 +377,253 @@ li {
     position: relative;
 }
 
-.search {
+.search-desktop {
     min-height: 9.2rem;
     background-color: var(--azul);
 }
+
+.search-mobile {
+    min-height: 9.2rem;
+    background-color: var(--azul);
+}
+
+
+/*******************************
+    0.1 MENU-MOBILE
+********************************/
+.hamburger-menu {
+    display: flex;
+    gap: 0.5rem;
+    width: 3rem;
+    height: 2rem;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: .3rem;
+    width: 100%;
+    background: var(--branco);
+    border-radius: .9rem;
+    opacity: 1;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.hamburger-menu span:nth-child(1) {
+    top: 0px;
+}
+
+.hamburger-menu span:nth-child(2),
+.hamburger-menu span:nth-child(3) {
+    top: 8px;
+}
+
+.hamburger-menu span:nth-child(4) {
+    top: 16px;
+}
+
+.hamburger-menu.open span:nth-child(1) {
+    top: 8px;
+    width: 0%;
+    left: 50%;
+}
+
+.hamburger-menu.open span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.hamburger-menu.open span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.hamburger-menu.open span:nth-child(4) {
+    top: 8px;
+    width: 0%;
+    left: 50%;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 60%;
+    height: 100%;
+    background-color: var(--branco);
+    padding: 5rem 2rem;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+    overflow-y: scroll;
+}
+
+.menu.active {
+    right: 0;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile-name {
+    margin: 0;
+    font-size: 18px;
+}
+
+.menu-list {
+    width: 100%;
+    transition: var(--transition);
+    margin-bottom: 2rem;
+}
+
+.menu-item {
+    width: 100%;
+    padding: 2rem;
+    border: 0;
+    font-size: 1.8rem;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+    background-color: var(--azul);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--branco);
+}
+
+.menu-item:hover {
+    background-color: var(--amarelo);
+    color: var(--preto80);
+}
+
+.menu-item a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+}
+
+.submenu {
+    height: 0;
+    list-style: none;
+    display: none;
+    transition: var(--transition);
+}
+
+.submenu.active {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: min-content;
+}
+
+.submenu li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--preto80);
+    font-size: 1.6rem;
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.submenu li a:hover {
+    background-color: var(--azulGelo);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*******************************
     0.2 BORDER-YELLOW
 ********************************/
 .border-yellow {
     width: 100%;
-    background-color: var(--amarelo);
+    background-color: var(--amareloOuro);
     height: 2.8rem;
 }
 
+
+/*******************************
+    0.2.1 SEARCH-CONTAINER
+********************************/
 .container-search {
     width: 100%;
-    max-width: 132rem;
+    max-width: 172rem;
+    height: 8.2rem;
     margin: 0 auto;
     padding: 2rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2rem;
     position: relative;
 }
 
-/*******************************
-    0.2.1 SEARCH-INPUT
-********************************/
+.container-search__mobile {
+    width: 100%;
+    max-width: 172rem;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+}
+
+.container__logo-icons {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-account {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: absolute;
+    left: 10rem;
+    right: 0;
+    flex: 2;
+}
+
+.search-account__mobile {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
 .search-input {
     width: 60.5rem;
     display: flex;
@@ -152,7 +633,17 @@ li {
     overflow: hidden;
 }
 
-.search-input input[type="search"] {
+.search-input__mobile {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--branco);
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+.search-input input[type="search"],
+.search-input__mobile input[type="search"] {
     flex: 1;
     border: none;
     padding: 1rem;
@@ -160,7 +651,8 @@ li {
     outline: none;
 }
 
-.search-input button[type="submit"] {
+.search-input button[type="submit"],
+.search-input__mobile button[type="submit"] {
     background-color: var(--branco);
     border: none;
     padding: 1rem;
@@ -196,7 +688,24 @@ li {
     fill: var(--branco);
 }
 
-/* DROPDOWN -- ESTILOS ESPECÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂFICOS */
+.dropbtn__account {
+    background-color: transparent;
+    color: var(--branco);
+    padding: 1rem;
+    font-size: 1.6rem;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn__account svg {
+    margin-left: 1rem;
+    transition: var(--transition);
+}
+
+.dropbtn__account svg path:hover {
+    fill: var(--branco);
+}
+
 .dropdown-content {
     width: 100%;
     height: fit-content;
@@ -206,6 +715,17 @@ li {
     background-color: var(--branco);
     overflow: hidden;
     transition: var(--transition);
+}
+
+.user {
+    width: 19rem;
+    height: fit-content;
+    position: absolute;
+    z-index: 3;
+    background-color: var(--branco);
+    overflow: hidden;
+    transition: var(--transition);
+    border-radius: .5rem;
 }
 
 .dropdown-content__container {
@@ -222,15 +742,49 @@ li {
     left: 0;
     background-color: var(--branco);
     transition: var(--transition);
+    border-radius: .5rem;
+}
+
+.show-user {
+    width: 19rem;
+    height: 20rem;
+    display: block;
+    border-top: .1rem solid var(--preto80Op);
+    background-color: var(--branco);
+    transition: var(--transition);
+}
+
+.account__list-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.account__list-link li {
+    padding: .5rem;
+}
+
+.account__list-links li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    color: var(--preto80);
 }
 
 /*******************************
     0.2.3 PERFIL-ICONS
 ********************************/
 .perfil-icons {
+    width: 20rem;
+    height: 5rem;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 5rem;
     position: absolute;
     right: 2rem;
@@ -284,12 +838,22 @@ li {
 /*******************************
     0.3 NAVBAR
 ********************************/
-.navbar {
+.navbar-desktop {
     min-height: 4rem;
     background-color: var(--branco);
-    box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
+    box-shadow: var(--shadow);
     border-radius: 0 0 .8rem .8rem;
     position: relative;
+    display: flex;
+}
+
+.navbar-mobile {
+    min-height: 4rem;
+    background-color: var(--branco);
+    box-shadow: var(--shadow);
+    border-radius: 0 0 .8rem .8rem;
+    position: relative;
+    display: none;
 }
 
 .container-navbar {
@@ -475,7 +1039,7 @@ li {
     display: flex;
     overflow: hidden;
     width: 100%;
-    height: 45rem;
+    height: 55rem;
     position: relative;
     z-index: -1;
 }
@@ -495,7 +1059,7 @@ li {
 }
 
 .text {
-    width: 50%;
+    width: 45%;
     display: flex;
     z-index: 1;
     justify-content: flex-start;
@@ -510,7 +1074,7 @@ li {
 }
 
 .description {
-    max-width: 50rem;
+    width: 100%;
     padding: 2rem 2rem 2rem 0;
 }
 
@@ -541,6 +1105,8 @@ li {
 .image img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: 100% 0;
 }
 
 /*******************************
@@ -571,6 +1137,50 @@ li {
 }
 
 /*******************************
+    0.6.5 FRETE
+********************************/
+.frete {
+    width: 100%;
+    height: 5rem;
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    padding: 0 5rem;
+}
+
+.frete-container {
+    max-width: 111rem;
+    height: 100%;
+    margin: 0 auto;
+    background-color: var(--branco);
+    box-shadow: var(--shadow);
+    border-radius: .5rem;
+    overflow-x: auto;
+}
+
+.frete-links {
+    width: 100%;
+    min-width: 60rem;
+    height: 100%;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    /* exemplo de tamanho mÃ­nimo */
+}
+
+.frete-links li {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    /* max-width: 20rem; */
+    /* exemplo de tamanho mÃ­nimo para cada li */
+}
+
+
+/*******************************
     0.7 FAVORITE-PRODUCTS
 ********************************/
 .favorite-products {
@@ -581,25 +1191,32 @@ li {
 }
 
 .favorite-products__cards {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     border-radius: 0 0 .5rem .5rem;
     gap: 1.5rem;
     padding: 4rem;
     background: url('../imgs/Petshop_files/bg-patas.png');
     background-repeat: repeat;
-    flex-wrap: wrap;
+    overflow-x: scroll;
 }
 
 
 /*******************************
     0.8 GRID-ANIMALS
 ********************************/
-.container-animals {
+.container-animals__desktop {
     width: 100%;
     height: 100%;
     padding-top: 3rem;
+}
+
+.container-animals__mobile {
+    width: 100%;
+    height: 100%;
+    padding-top: 3rem;
+    display: none;
 }
 
 .grid {
@@ -635,7 +1252,20 @@ li {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    transition: .2s ease;
+    transition: var(--transition);
+}
+
+.about-animal__mobile {
+    width: 25rem;
+    height: 25rem;
+    border-radius: .5rem;
+    display: none;
+    position: relative;
+    background: url('../imgs/Petshop_files/bg-patas.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: var(--transition);
 }
 
 .efeito-marca__animal {
@@ -779,6 +1409,7 @@ li {
     font-size: 4.8rem;
     line-height: 6.5rem;
     color: var(--branco);
+    transition: var(--transition);
 }
 
 
@@ -822,7 +1453,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    width: 21.2rem;
 }
 
 .slider-button {
@@ -880,10 +1511,7 @@ li {
     gap: 1rem;
 }
 
-.brinquedos,
-.tosa,
-.cuidados,
-.banho {
+.foryou-animals__card {
     width: 100%;
     height: 20rem;
     background: url('../imgs/Petshop_files/bg-patas.png');
@@ -892,12 +1520,25 @@ li {
     place-items: center;
     justify-content: center;
     border-radius: .5rem;
+    transition: var(--transition);
 }
 
-.brinquedos img,
-.tosa img,
-.cuidados img,
-.banho img {
+.foryou__link {
+    min-width: 100%;
+    min-height: 100%;
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 5.4rem;
+    color: var(--branco);
+    display: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+}
+
+.foryou-animals__card img {
     position: absolute;
     bottom: 0;
 }
@@ -919,11 +1560,10 @@ li {
 
 .pets-services__cards {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 26rem);
     gap: 2.6rem;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+
 }
 
 .pets-services__card {
@@ -932,17 +1572,41 @@ li {
     background: url('../imgs/Petshop_files/bg-patas.png');
     overflow: hidden;
     border-radius: .5rem;
+    position: relative;
 }
+
+@keyframes opacityPetsAdd {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes opacityPetsRemove {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 
 .pets-services__image {
     width: 100%;
     height: 80%;
     position: relative;
+    display: block;
 }
 
 .pets-services__image img {
     position: absolute;
     bottom: 0;
+    display: block;
 }
 
 .pets-services__about {
@@ -959,6 +1623,72 @@ li {
     justify-content: center;
 }
 
+@keyframes cardDetailsUp {
+    0% {
+        top: 100%;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes cardDetailsDown {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+.pets-services__details {
+    width: 100%;
+    height: 100%;
+    background-color: var(--azul);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    position: absolute;
+    z-index: 1;
+}
+
+.details-icon {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.details-text {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    color: var(--branco);
+}
+
+.details-button {
+    width: 100%;
+    height: 4rem;
+    background-color: var(--branco);
+    border: none;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .5rem;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    color: var(--preto80);
+}
+
 /*******************************
     1.2 FOOD-ANIMALS
 ********************************/
@@ -970,7 +1700,7 @@ li {
 .food-animals__container {
     width: 100%;
     overflow-x: hidden;
-    overflow-y: hidden; 
+    overflow-y: hidden;
     display: flex;
     align-items: center;
     gap: 3rem;
@@ -1001,15 +1731,17 @@ li {
 
 .footer-links {
     width: 100%;
-    height: 30rem;
+    min-height: 30rem;
     display: flex;
+    flex-wrap: wrap;
+    padding: 2rem 0;
 }
 
 .links-help {
     display: flex;
     padding: 2rem 0;
     gap: 3rem;
-    width: 45%;
+    flex: 1 1 55%;
 }
 
 .list-help {
@@ -1031,18 +1763,19 @@ li {
 }
 
 .other-links {
-    width: 65%;
-    justify-content: flex-end;
+    justify-content: center;
     display: flex;
     gap: 3rem;
-    padding: 2rem 0;
+    padding: 2rem 0 0 2rem;
+    flex: 1 1 40%;
 }
 
 .footer-links__social-media {
     width: 100%;
-    height: 10rem;
+    min-height: 10rem;
     background-color: var(--amarelo);
-} 
+    padding: 2rem;
+}
 
 .social-media__container {
     max-width: 120rem;
@@ -1051,6 +1784,8 @@ li {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .address {
@@ -1065,7 +1800,7 @@ li {
     gap: 2rem;
 }
 
-.media:hover svg path{
+.media:hover svg path {
     fill: var(--azul);
 }
 
@@ -1235,7 +1970,7 @@ li {
 
 .sobre-produto {
     width: 100%;
-    /* height: 6.4rem; */
+    height: 6.4rem;
     padding: 1rem;
     border-radius: .5rem;
     font-style: normal;
@@ -1268,6 +2003,8 @@ li {
     border-top: .2rem dashed var(--preto80Op);
     border-bottom: .2rem dashed var(--preto80Op);
     padding: .5rem 0;
+    display: flex;
+    justify-content: center;
 }
 
 .preco .preco-avista {
@@ -1515,8 +2252,13 @@ li {
 }
 
 /* grid - animals */
-.grid-animals {
+.grid-animals__desktop {
     width: 100%;
+    padding: 4rem;
+}
+
+.grid-animals__mobile {
+    display: none;
     padding: 4rem;
 }
 
@@ -1552,6 +2294,38 @@ li {
     gap: 1rem;
 }
 
+@media (max-width: 1400px) {
+    .search-navbar__desktop {
+        display: none;
+    }
+
+    .search-navbar__mobile {
+        display: block;
+    }
+
+    .dropdown {
+        display: none;
+    }
+
+    .carrossel {
+        height: 45rem;
+    }
+
+    .text {
+        width: 45%;
+    }
+
+    .description h2 {
+        font-size: 3.8rem;
+        line-height: 1.2;
+    }
+
+    .description p {
+        font-size: 2.8rem;
+        line-height: 1.2;
+    }
+}
+
 /* TODO O CODIGO ABAIXO */
 @media (max-width: 1250px) {
     .grid {
@@ -1571,14 +2345,43 @@ li {
         width: 30%;
         height: 30%;
     }
+
+    .carrossel {
+        height: 40rem;
+    }
+
+    .text {
+        width: 40%;
+    }
+
+    .description h2 {
+        font-size: 2.8rem;
+    }
+
+    .description p {
+        font-size: 1.8rem;
+    }
+
+    .pets-services__cards {
+        grid-template-columns: repeat(2, 26rem);
+        place-content: center;
+    }
+
 }
 
 @media (max-width: 1000px) {
-    .container-animals {
-        padding-top: 3rem;
-        overflow-x: scroll;
-        overflow-y: hidden;
+    .grid-animals__desktop {
+        display: none;
     }
+
+    .grid-animals__mobile {
+        display: block;
+    }
+
+    .container-animals__mobile {
+        display: block;
+    }
+
 
     .grid {
         grid-template-columns: 35rem auto;
@@ -1616,6 +2419,95 @@ li {
 
     .foryou-animals__grid {
         grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+    }
+
+    .about-animal__mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .about-animal__mobile img {
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+    }
+
+
+    .owl-carousel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        max-width: 87rem;
+        margin: 2rem auto;
+        padding: 0 2rem;
+        position: relative;
+        transition: var(--transition);
+    }
+
+    .owl-card {
+        left: -100%;
+        width: 25rem;
+        height: 100%;
+        transition: all 0.3s ease;
+        opacity: 0.3;
+        z-index: 1;
+    }
+
+    .owl-card span {
+        color: var(--branco);
+        font-size: 5rem;
+    }
+
+    .owl-card.selected {
+        position: relative;
+        left: 0;
+        width: 25rem;
+        height: 25rem;
+        opacity: 1;
+        z-index: 2;
+    }
+
+    .owl-card.left,
+    .owl-card.right {
+        position: absolute;
+        width: 25%;
+        height: 150px;
+        opacity: 0.3;
+        z-index: 0;
+        transition: all 0.3s ease;
+    }
+
+    .owl-card.left {
+        left: 0;
+    }
+
+    .owl-card.right {
+        right: 0;
+    }
+
+    .owl-card.selected+.owl-card.left {
+        opacity: 1;
+        z-index: 1;
+        width: 33.33%;
+        height: 200px;
+    }
+
+    .owl-card.selected+.owl-card.right {
+        opacity: 1;
+        z-index: 1;
+        width: 33.33%;
+        height: 200px;
+    }
+
+    .owl-card.selected+.owl-card.right+.owl-card {
+        opacity: 1;
+        z-index: 1;
+        width: 33.33%;
+        height: 200px;
     }
 
     .brinquedos img,
@@ -1623,6 +2515,117 @@ li {
     .cuidados img,
     .banho img {
         height: 105%;
+    }
+
+    .title-about h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+    }
+
+    .title-about p {
+        font-size: 2.5rem;
+        line-height: 1.3;
+    }
+
+    .carrossel {
+        height: 35rem;
+    }
+
+    .text {
+        width: 35%;
+    }
+
+    .description h2 {
+        font-size: 2.2rem;
+    }
+
+    .description p {
+        font-size: 1.5rem;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .text {
+        display: none;
+    }
+
+    .owl-carousel {
+        flex-direction: column;
+    }
+
+    .owl-card,
+    .about-animal__mobile,
+    .owl-card.selected {
+        width: 100%;
+    }
+}
+
+@media (max-width: 765px) {
+    .social-media__container {
+        justify-content: center;
+    }
+
+    .links-help {
+        flex-direction: column;
+        justify-content: center;
+        flex: 1 1 100%;
+    }
+
+    .links-help img {
+        max-width: 50rem;
+        max-height: 50rem;
+    }
+
+    .list-help {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 665px) {
+    .pets-services__cards {
+        grid-template-columns: repeat(1, 26rem);
+    }
+}
+
+@media (max-width: 580px) {
+    .foryou-animals {
+        padding: 0;
+    }
+
+    .foryou-animals__card {
+        height: 20rem;
+    }
+
+
+    .foryou-animals__grid {
+        grid-template-columns: repeat(1, 1fr);
+        place-content: center;
+        position: inherit;
+    }
+
+    .foryou-animals__card img {
+        height: 100%;
+        position: inherit;
+    }
+
+    .grid-animals__mobile,
+    .owl-carousel {
+        padding: 0;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .other-links {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 410px) {
+    .foryou-animals__card img {
+        width: 90%;
     }
 }
 

@@ -8,7 +8,7 @@
         <div class="container-animals">
             <div class="grid">
                 <div class="about-animal amareloOuro">
-                    <img src="../imgs/Petshop_files/cachorro.png" alt="Cachorro" />
+                    <img src="imgs/Petshop_files/cachorro.png" alt="Cachorro" />
                     <div class="animacao-diagonal__direita">
                         <svg width="107" height="105" viewBox="0 0 107 105" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_56_625)">
@@ -76,7 +76,7 @@
 
                 <div class="quadro">
                     <div class="about-animal vermelho">
-                        <img src="../imgs/Petshop_files/gato.png" alt="Gato" />
+                        <img src="imgs/Petshop_files/gato.png" alt="Gato" />
                         <div class="animacao-diagonal__direita">
                             <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M18.9491 18.3809C13.5677 16.957 4.7263 19.4898 6.62885 25.9995C7.608 29.3157 10.4082 28.8512 13.0816 29.3269C16.3588 29.9159 16.6639 32.7705 19.4416 34.1933C20.2846 34.7315 21.2616 35.0228 22.2619 35.0342C23.2622 35.0456 24.2459 34.7766 25.1015 34.2577C30.3586 30.7595 24.9055 21.9103 21.2276 19.3526C20.53 18.8995 19.7591 18.5708 18.9491 18.3809Z" fill="#FF9839"/>
@@ -113,7 +113,7 @@
                         <a class="title-animal" href="#">Gatos</a>
                     </div>
                     <div class="about-animal verdePastel">
-                        <img src="../imgs/Petshop_files/periquito.png" alt="Periquito" />
+                        <img src="imgs/Petshop_files/periquito.png" alt="Periquito" />
                         <div class="animacao-diagonal__esquerda">
                             <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.6047 14.4951C16.1616 13.7644 14.5616 13.3974 12.9437 13.4259C11.3259 13.4544 9.7391 13.8777 8.32137 14.6589C10.7642 15.1647 13.1995 15.7186 15.6271 16.3207C16.5013 16.5408 17.5124 16.8977 17.7553 17.7643C17.8016 18.0763 17.785 18.3944 17.7065 18.7C17.628 19.0056 17.4892 19.2924 17.2983 19.5436C14.0799 24.89 10.7722 25.7202 8.53438 31.5146C14.474 27.6573 15.996 24.4481 20.7122 19.1696C26.2146 24.0939 23.8712 27.7747 23.9909 32.3365C24.6446 32.6099 25.2836 31.8797 25.55 31.2181C26.2794 29.3129 26.5625 27.2661 26.3776 25.2352C26.1927 23.2042 25.5446 21.2431 24.4831 19.5024C19.6967 11.7647 27.7267 8.87204 28.7393 5.76198C26.9231 3.67196 21.4433 16.4474 17.6047 14.4951Z" fill="#6D4E5D"/>
@@ -135,7 +135,7 @@
                     </div>
 
                     <div class="about-animal marrom">
-                        <img src="../imgs/Petshop_files/roedor.png" alt="Roedor" />
+                        <img src="imgs/Petshop_files/roedor.png" alt="Roedor" />
                         <div class="animacao-vertical__desce">
                             <svg width="42" height="46" viewBox="0 0 42 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M26.0348 15.7799C25.0721 16.1415 24.4909 17.2922 23.6217 17.8826C21.9011 19.0934 19.8751 17.9517 18.2867 16.7966L14.9967 14.4312C14.3944 14.0725 13.9022 13.5554 13.5736 12.9362C12.8523 11.3945 14.3329 9.04847 15.8766 9.29816C17.4204 9.54784 18.1645 11.785 19.6448 12.3756C20.2645 12.523 20.9105 12.5194 21.5285 12.3652C22.1465 12.2109 22.7184 11.9106 23.1961 11.4894C25.2786 10.0665 29.3134 7.62103 30.7519 11.112C32.6705 15.6986 27.8645 15.0317 26.0348 15.7799Z" fill="#835E2C"/>
@@ -201,7 +201,7 @@
                     </div>
 
                     <div class="about-animal azul">
-                        <img src="../imgs/Petshop_files/peixes.png" alt="Peixes" />
+                        <img src="imgs/Petshop_files/peixes.png" alt="Peixes" />
                         <div class="animacao-vertical__sobe">
                             <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="13.5" cy="13.5" r="13.5" fill="white" fill-opacity="0.15"/>

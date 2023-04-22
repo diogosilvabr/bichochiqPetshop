@@ -7,17 +7,24 @@
 
     <div class="foryou-animals__container">
         <div class="foryou-animals__grid">
-            <div class="brinquedos vermelho">
-                <img src="../imgs/Petshop_files/brinquedo.png" alt="">
+            <div class="foryou-animals__card vermelho">
+                <img src="imgs/Petshop_files/brinquedo.png" alt="">
+                <a class="foryou__link" href="#">Brinquedos</a>
             </div>
-            <div class="tosa verdePastel">
-                <img src="../imgs/Petshop_files/tosa.png" alt="">
+
+            <div class="foryou-animals__card verdePastel">
+                <img src="imgs/Petshop_files/tosa.png" alt="">
+                <a class="foryou__link" href="#">Tosa</a>
             </div>
-            <div class="cuidados amareloOuro">
-                <img src="../imgs/Petshop_files/cuidados.png" alt="">
+
+            <div class="foryou-animals__card amareloOuro">
+                <img src="imgs/Petshop_files/cuidados.png" alt="">
+                <a class="foryou__link" href="#">Cuidados</a>
             </div>
-            <div class="banho azul">
-                <img src="../imgs/Petshop_files/banho.png" alt="">
+
+            <div class="foryou-animals__card azul">
+                <img src="imgs/Petshop_files/banho.png" alt="">
+                <a class="foryou__link" href="#">Banho</a>
             </div>
         </div>
     </div>

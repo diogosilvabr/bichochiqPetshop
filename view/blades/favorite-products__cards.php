@@ -8,7 +8,7 @@
   <!-- css - 0.7.1 -->
   <div class="favorite-products__cards amareloOuro">
     <div class="card">
-      <img src="../imgs/produto-teste.png" class="img-produto" alt="" />
+      <img src="imgs/produto-teste.png" class="img-produto" alt="" />
       <div class="sobre-card">
         <div class="info-card">
           <div class="sobre-produto">
@@ -77,7 +77,7 @@
     </div>
 
     <div class="card">
-      <img src="../imgs/produto-teste.png" class="img-produto" alt="" />
+      <img src="imgs/produto-teste.png" class="img-produto" alt="" />
       <div class="sobre-card">
         <div class="info-card">
           <div class="sobre-produto">
@@ -146,7 +146,7 @@
     </div>
 
     <div class="card">
-      <img src="../imgs/produto-teste.png" class="img-produto" alt="" />
+      <img src="imgs/produto-teste.png" class="img-produto" alt="" />
       <div class="sobre-card">
         <div class="info-card">
           <div class="sobre-produto">
@@ -215,7 +215,7 @@
     </div>
 
     <div class="card">
-      <img src="../imgs/produto-teste.png" class="img-produto" alt="" />
+      <img src="imgs/produto-teste.png" class="img-produto" alt="" />
       <div class="sobre-card">
         <div class="info-card">
           <div class="sobre-produto">
@@ -284,7 +284,7 @@
     </div>
 
     <div class="card">
-      <img src="../imgs/produto-teste.png" class="img-produto" alt="" />
+      <img src="imgs/produto-teste.png" class="img-produto" alt="" />
       <div class="sobre-card">
         <div class="info-card">
           <div class="sobre-produto">Teste 2</div>

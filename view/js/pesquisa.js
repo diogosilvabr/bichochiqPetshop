@@ -10,16 +10,33 @@ const dropdowns = document.querySelectorAll(".dropdown");
 dropdowns.forEach((dropdown) => {
   const dropdownContents = dropdown.querySelector(".dropdown-content");
   const dropBtn = dropdown.querySelector(".dropbtn");
+  const dropbtn__account = dropdown.querySelector(".dropbtn__account");
+  const user = dropdown.querySelector('.user');
   const menuButton = dropdown.querySelector(".menu-button");
   const dropbtnPath = dropdown.querySelector(".dropbtn > svg path");
+  const userPath = dropdown.querySelector(".dropbtn__account > svg path");
   const menuHamburguerSpans = dropdown.querySelectorAll(".menu-hamburguer > span");
 
   if (dropdownContents) {
     dropdownContents.style.height = 0;
   }
 
+  if (user) {
+    user.style.height = 0;
+    userPath.setAttribute('fill', 'var(--branco)');
+  }
+
   dropdown.addEventListener("mouseenter", () => {
-    dropbtnPath.setAttribute("fill", "var(--branco)");
+    if (dropBtn) {
+      dropBtn.style.backgroundColor = "var(--azul)";
+      dropBtn.style.color = "var(--branco)";
+      dropbtnPath.setAttribute("fill", "var(--branco)");
+    }
+
+    if (user) {
+      user.classList.add('show-user');
+      user.style.height = user.scrollHeight + "px";
+    }
 
     if (dropdownContents) {
       menuButton.style.backgroundColor = "var(--azul)";
@@ -30,14 +47,19 @@ dropdowns.forEach((dropdown) => {
       });
       dropdownContents.classList.add("show");
       dropdownContents.style.height = dropdownContents.scrollHeight + "px";
-    } else {
-      dropBtn.style.backgroundColor = "var(--azul)";
-      dropBtn.style.color = "var(--branco)";
-    }
+      }
   });
 
   dropdown.addEventListener("mouseleave", () => {
-    dropbtnPath.setAttribute("fill", "var(--preto80)");
+    if (dropBtn) {
+      dropBtn.style.backgroundColor = "transparent";
+      dropBtn.style.color = "var(--pretoPuro)";
+      dropbtnPath.setAttribute("fill", "var(--preto80)");
+    }
+    if (user) {
+      user.classList.remove("show-user");
+      user.style.height = "0";
+    }
 
     if (dropdownContents) {
       menuButton.style.backgroundColor = "transparent";
@@ -49,14 +71,11 @@ dropdowns.forEach((dropdown) => {
 
       dropdownContents.classList.remove("show");
       dropdownContents.style.height = "0";
-    } else {
-      dropBtn.style.backgroundColor = "transparent";
-      dropBtn.style.color = "var(--pretoPuro)";
     }
   });
 });
 
-const url = "../json/produtos.json";
+const url = "json/produtos.json";
 const letras = document.querySelectorAll(".letra");
 const listaProdutos = document.getElementById("lista-produtos");
 
@@ -141,34 +160,62 @@ setInterval(proximoSlide, intervalo);
 
 
 // Selecionando os elementos da página
-const sliderContainer = document.querySelector('.slider-container');
-const sliderContent = document.querySelector('.slider-content');
-const prevButton = document.querySelector('.prev-button');
-const nextButton = document.querySelector('.next-button');
-const productCard = document.querySelectorAll('.product-card');
+const sliderContainer = document.querySelector(".slider-container");
+const sliderContent = document.querySelector(".slider-content");
+const prevButton = document.querySelector(".prev-button");
+const nextButton = document.querySelector(".next-button");
+const productCards = document.querySelectorAll(".product-card");
+const spacing = 10;
 const cardWidth = 212;
-const minTranslate = 0;
-let maxTranslate = (productCard.length - 5) * cardWidth;
 let currentPosition = 0;
 
-function showPrev() {
-  currentPosition -= cardWidth;
-  if (currentPosition < minTranslate) {
-    currentPosition = minTranslate;
+function slide(direction) {
+  const containerWidth = sliderContainer.clientWidth;
+  const contentWidth = sliderContent.clientWidth;
+  const maxPosition = Math.ceil(
+    (contentWidth - containerWidth) / (cardWidth + spacing)
+  );
+  currentPosition = currentPosition + direction;
+  if (currentPosition < 0) {
+    currentPosition = maxPosition;
+  } else if (currentPosition > maxPosition) {
+    currentPosition = 0;
   }
-  sliderContent.style.transform = `translateX(${-currentPosition}px)`;
+  sliderContent.style.transform = `translateX(-${currentPosition * (cardWidth + spacing)}px)`;
 }
 
-function showNext() {
-  currentPosition += cardWidth;
-  if (currentPosition > maxTranslate) {
-    currentPosition = maxTranslate;
-  }
-  sliderContent.style.transform = `translateX(${-currentPosition}px)`;
-}
+prevButton.addEventListener("click", () => slide(-1));
+nextButton.addEventListener("click", () => slide(1));
 
-prevButton.addEventListener('click', showPrev);
-nextButton.addEventListener('click', showNext);
+// const sliderContainer = document.querySelector('.slider-container');
+// const sliderContent = document.querySelector('.slider-content');
+// const prevButton = document.querySelector('.prev-button');
+// const nextButton = document.querySelector('.next-button');
+// const productCard = document.querySelectorAll('.product-card');
+// const cardWidth = 212;
+// const minTranslate = 0;
+// console.log(productCard.length)
+// let maxTranslate = (productCard.length - 5) * cardWidth;
+// let currentPosition = 0;
+
+// function showPrev() {
+//   currentPosition -= cardWidth;
+//   if (currentPosition < minTranslate) {
+//     currentPosition = minTranslate;
+//   }
+//   sliderContent.style.transform = `translateX(${-currentPosition}px)`;
+// }
+
+// function showNext() {
+//   currentPosition += cardWidth;
+//   if (currentPosition > maxTranslate) {
+//     currentPosition = maxTranslate;
+//   }
+//   sliderContent.style.transform = `translateX(${-currentPosition}px)`;
+// }
+
+// prevButton.addEventListener('click', showPrev);
+// nextButton.addEventListener('click', showNext);
 
 
 
