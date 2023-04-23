@@ -39,9 +39,7 @@ function limparEntrada($entrada)
 		<li class="nav-item">
 			<a class="nav-link" href="addProduto.php" data-toggle="tab">Cadastrar Produto</a>
 		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="updateProduto.php" data-toggle="tab">Atualizar Produto</a>
-		</li>
+
 	</ul>
 
 	<div class="tab-content">
@@ -85,7 +83,7 @@ function limparEntrada($entrada)
 					<td><?php echo $produto['descricao']; ?></td>
 					<td><?php echo $produto['tamanho']; ?></td>
 					<td><?php echo $produto['quantidade']; ?></td>
-					<td><?php echo $produto['especie']; ?></td>
+					<td><?php echo implode(",", $produto['especie']); ?></td>
 					<td><?php echo $produto['categoria']; ?></td>
 					<td>
 						<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">

@@ -130,7 +130,7 @@ if (isset($_POST["atualizar"])) {
 }
 
     if(isset($_POST["atualizar"])) {
-        $produtoAtualizado = atualizarProduto($id, $nome, $preco, $descricao, $quantidade, $tamanho, $especie, $categoria);
+        $produtoAtualizado = atualizarProduto($id, $nome, $preco, $descricao, $quantidade, $tamanho, $especie, $categoria, $nomeImagem);
         echo "Produto atualizado com sucesso. Número de produtos atualizados:";
         } else {
             echo "Erro ao atualizar produto";

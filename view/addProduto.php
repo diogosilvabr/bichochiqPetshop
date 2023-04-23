@@ -16,7 +16,11 @@ function criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especie
     if (!is_array($especies)) {
         // Converte o array em uma string com vírgulas entre os valores
         $especies = explode(',', $especies);
-    }
+
+    } 
+     if (is_array($tamanho)) {
+        $tamanho = implode(',', $tamanho);
+    } 
     
     $produto = array(
         "nome" => $nome,
@@ -125,7 +129,7 @@ if (isset($_POST["cadastrar"])) {
     $nome = limparEntrada($_POST["nome"]);
     $preco = floatval(limparEntrada($_POST["preco"]));
     $descricao = limparEntrada($_POST["descricao"]);
-    $tamanho = limparEntrada($_POST["tamanho"]);
+    $tamanho_array = limparEntrada(explode(",", $_POST['tamanho']));
     $quantidade = limparEntrada($_POST["quantidade"]);
     $especie = limparEntrada($_POST["especie"]);
     $categoria = limparEntrada($_POST["categoria"]);
@@ -150,7 +154,7 @@ if (isset($_POST["cadastrar"])) {
 }
 
 if (isset($_POST["cadastrar"])) {
-    $idProduto = criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especie, $categoria, $nomeImagem);
+    $idProduto = criarProduto($nome, $preco, $descricao, $tamanho_array, $quantidade, $especie, $categoria, $nomeImagem);
     if ($idProduto) {
         echo "Produto cadastrado com sucesso. ID do Produto: " . $idProduto;
     } else {

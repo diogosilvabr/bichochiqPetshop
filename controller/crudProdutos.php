@@ -51,7 +51,7 @@ function buscarProdutoPorNome($nome)
     }
 }
 
-function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade, $especie, $categoria)
+function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade, $especie, $categoria, $nomeImagem)
 {
     if (!preg_match('/^[0-9a-fA-F]{24}$/', $id)) {
         throw new InvalidArgumentException('Valor inválido para ID do produto');
@@ -63,10 +63,11 @@ function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade,
             "nome" => $nome,
             "preco" => $preco,
             "descricao" => $descricao,
-            "tamanho" => $tamanho,
+            "tamanho" => (array) $tamanho,
             "quantidade" => $quantidade,
-            "especie" => $especie,
-            "categoria" => $categoria
+            "especie" => (array) $especie,
+            "categoria" => $categoria,
+            "imagem" => $nomeImagem
         )
     );
     $resultado = $colecao->updateOne(["_id" => new MongoDB\BSON\ObjectId($id)], $atualizacao);
