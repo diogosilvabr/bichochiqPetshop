@@ -18,7 +18,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -225,7 +225,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -292,7 +292,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -359,7 +359,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -426,7 +426,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -493,7 +493,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -560,7 +560,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -627,7 +627,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -694,7 +694,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -761,7 +761,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -828,7 +828,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -895,7 +895,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
@@ -962,7 +962,7 @@
             <button class="btn-carr-mais" id="addCarrinho">
               Colocar no Carrinho
             </button>
-            <button class="btn-carr-mais">Mais Detalhes</button>
+            <a href="detalhes-produto.php" class="btn-carr-mais">Mais Detalhes</a>
           </div>
         </div>
       </div>
