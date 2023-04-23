@@ -202,6 +202,7 @@ include("blades/header.php");
         ?>
     </footer>
 
+    <script src="js/carousel.js"></script>
     <script src="js/script.js"></script>
     <script src="js/dropdowns.js"></script>
     <script src="js/menumobile.js"></script>

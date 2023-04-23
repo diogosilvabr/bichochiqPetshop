@@ -228,7 +228,7 @@ p {
 
 .product-info__about {
     width: 100%;
-    height: 7rem;
+    /* height: 7rem; */
 }
 
 .product__nome-code {
@@ -2207,7 +2207,7 @@ p {
 
 @keyframes subindo-info {
     0% {
-        height: 13.5rem;
+        height: 16.1rem;
     }
 
     100% {
@@ -2221,7 +2221,7 @@ p {
     }
 
     100% {
-        height: 13.5rem;
+        height: 16.1rem;
     }
 }
 
