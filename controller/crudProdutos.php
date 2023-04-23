@@ -13,6 +13,24 @@ function criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especie
         // Converte o array em uma string com vírgulas entre os valores
         $especies = implode(',', $especies);
     }
+
+    // Verifica se foi enviado um arquivo de imagem
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] == 0 && file_exists($_FILES['imagem']['tmp_name'])) {
+        $imagem = file_get_contents($_FILES['imagem']['tmp_name']);
+        $tipoImagem = $_FILES['imagem']['type'];
+        $imagemBSON = new MongoDB\BSON\Binary($imagem, MongoDB\BSON\Binary::TYPE_GENERIC);
+    } else {
+        $imagemBSON = null;
+    }
+    
+    // Verifica se foi enviado um arquivo de imagem
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] == 0 && file_exists($_FILES['imagem']['tmp_name'])) {
+        $imagem = file_get_contents($_FILES['imagem']['tmp_name']);
+        $tipoImagem = $_FILES['imagem']['type'];
+        $imagemBSON = new MongoDB\BSON\Binary($imagem, MongoDB\BSON\Binary::TYPE_GENERIC);
+    } else {
+        $imagemBSON = null;
+    }
     
     $produto = array(
         "nome" => $nome,
@@ -22,13 +40,12 @@ function criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especie
         "quantidade" => $quantidade,
         "especie" => $especies,
         "categoria" => $categoria,
-        "imagem" => $nomeImagem
+        "imagem" => $imagemBSON
     );
     $resultado = $colecao->insertOne($produto);
     return $resultado->getInsertedId();
 }
-
-function buscarProdutoPorNome($nome)
+function buscarProdutoPorNome($nome, $limite = 1)
 {
     try {
         $manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
@@ -39,20 +56,64 @@ function buscarProdutoPorNome($nome)
                 ['especie' => ['$regex' => new MongoDB\BSON\Regex($nome, 'i')]]
             ]
         ];
-        $query = new MongoDB\Driver\Query($filter);
+        $options = [
+            'limit' => $limite
+        ];
+        $query = new MongoDB\Driver\Query($filter, $options);
         $cursor = $manager->executeQuery('bichochique_db.produtos', $query);
-        $data = [];
         foreach ($cursor as $document) {
-            $data[] = (array)$document;
+            return (array)$document;
         }
-        return $data;
+        return null;
     } catch (MongoDB\Driver\Exception\Exception $e) {
-        echo "Erro ao buscar produto por nome: " . $e->getMessage();
+        throw new Exception("Erro ao buscar produto por nome: " . $e->getMessage());
     }
 }
 
-function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade, $especie, $categoria)
+// FUNÇÃO PARA ATUALIZAÇÃO DO PRODUTO
+if (isset($_POST["atualizar"])) {
+    $id = limparEntrada($_POST["id"]);
+    $nome = limparEntrada($_POST["nome"]);
+    $preco = floatval(limparEntrada($_POST["preco"]));
+    $descricao = limparEntrada($_POST["descricao"]);
+    $tamanho = limparEntrada($_POST["tamanho"]);
+    $quantidade = limparEntrada($_POST["quantidade"]);
+    $especie = limparEntrada($_POST["especie"]);
+    $categoria = limparEntrada($_POST["categoria"]);
+    $nomeImagem = '';
+    
+    // Verifica se foi enviado um arquivo de imagem
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] == 0) {
+        $nomeImagem = $_FILES['imagem']['name'];
+        $extensao = pathinfo($nomeImagem, PATHINFO_EXTENSION);
+        $destino = 'images/' . $nomeImagem;
+
+        // Verifica se o arquivo é uma imagem válida
+        $extensoesPermitidas = array('jpg', 'jpeg', 'png', 'gif');
+        if (in_array(strtolower($extensao), $extensoesPermitidas)) {
+            if (move_uploaded_file($_FILES['imagem']['tmp_name'], $destino)) {
+                // arquivo movido com sucesso
+            } else {
+                $nomeImagem = '';
+                // Tratar erro de movimentação do arquivo
+            }
+    } else {
+        // Tratar erro de tipo de arquivo inválido
+    }
+}
+
+    $produtoAtualizado = atualizarProduto($id, $nome, $preco, $descricao, $quantidade, $tamanho, $especie, $categoria);
+    echo "Produto atualizado com sucesso. Número de produtos atualizados: " . $produtoAtualizado;
+}  
+      
+function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade, $especies, $categoria)
 {
+        // Verifica se $especies é um array
+        if (is_array($especies)) {
+            // Converte o array em uma string com vírgulas entre os valores
+            $especies = implode(',', $especies);
+        }
+
     global $colecao;
     $atualizacao = array(
         '$set' => array(
@@ -61,8 +122,9 @@ function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade,
             "descricao" => $descricao,
             "tamanho" => $tamanho,
             "quantidade" => $quantidade,
-            "especie" => $especie,
-            "categoria" => $categoria
+            "especie" => $especies,
+            "categoria" => $categoria,
+            "imagem" => $imagemBSON
         )
     );
     $resultado = $colecao->updateOne(["_id" => new MongoDB\BSON\ObjectId($id)], $atualizacao);
@@ -80,5 +142,3 @@ function deletarProduto($id)
         return 0;
     }
 }
-
-?>
