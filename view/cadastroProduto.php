@@ -133,8 +133,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		} else {
 			echo "Nenhum produto encontrado com a palavra-chave informada.";
 		}
-	} elseif (isset($_POST["cadastrar"])) {
+	} elseif (isset($_POST["cadastrar"]) || isset($_POST["atualizar"])) {
 		$id = "";
+		if (isset($_POST["atualizar"])) {
+			$id = limparEntrada($_POST["id"]);
+		}
 		$nome = limparEntrada($_POST["nome"]);
 		$preco = floatval(limparEntrada($_POST["preco"]));
 		$descricao = limparEntrada($_POST["descricao"]);
@@ -159,8 +162,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					$nomeImagem = '';
 					// Tratar erro de movimentação do arquivo
 				}
+			} else {
+				// Tratar erro de tipo de arquivo inválido
 			}
-		} 
+		} else {
+			// Tratar erro de arquivo não enviado
+		}
 
 		if (isset($_POST["cadastrar"])) {
 			$idProduto = criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especie, $categoria, $nomeImagem);
