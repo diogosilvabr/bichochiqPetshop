@@ -9,9 +9,9 @@ function criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especie
     global $colecao;
     
     // Verifica se $especies é um array
-    if (is_array($especies)) {
+    if (!is_array($especies)) {
         // Converte o array em uma string com vírgulas entre os valores
-        $especies = implode(',', $especies);
+        $especies = explode(',', $especies);
     }
     
     $produto = array(
@@ -56,7 +56,7 @@ function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade,
     if (!preg_match('/^[0-9a-fA-F]{24}$/', $id)) {
         throw new InvalidArgumentException('Valor inválido para ID do produto');
     }
-    
+
     global $colecao;
     $atualizacao = array(
         '$set' => array(
