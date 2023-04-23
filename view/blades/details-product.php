@@ -20,17 +20,17 @@
                     <form class="size-quantity__form">
                         <label>
                             <input type="radio" name="tamanho" value="40g" />
-                            <span class="size-product__btn">100ML</span>
+                            <span class="size-product__btn">40g</span>
                         </label>
 
                         <label>
                             <input type="radio" name="tamanho" value="80g" />
-                            <span class="size-product__btn">250ML</span>
+                            <span class="size-product__btn">80g</span>
                         </label>
 
                         <label>
                             <input type="radio" name="tamanho" value="140g" />
-                            <span class="size-product__btn">500ML</span>
+                            <span class="size-product__btn">140g</span>
                         </label>
                     </form>
                 </div>
