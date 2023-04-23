@@ -31,13 +31,28 @@ function limparEntrada($entrada)
 ?>
 <div class="container">
 	<h1 class="display-4">Gerenciamento de Produtos</h1>
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
+			<a class="nav-link active" href="#buscar" data-toggle="tab">Buscar Produtos</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="addProduto.php" data-toggle="tab">Cadastrar Produto</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="updateProduto.php" data-toggle="tab">Atualizar Produto</a>
+		</li>
+	</ul>
 
+	<div class="tab-content">
+		<div class="tab-pane active" id="buscar">
 			<form class="form-control" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 				<div class="form-group">
 					<input class="form-control" type="text" name="busca" placeholder="Digite uma palavra-chave">
 				</div>
 				<input class="btn btn-primary" type="submit" name="buscar" value="Buscar">
 			</form>
+		</div>
 
 	<!-- <h2>Excluir Produto</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
