@@ -143,11 +143,12 @@ include("blades/header.php");
 
     <script src="js/script.js"></script>
     <script src="js/gridAnimals.js"></script>
-    <script src="js/pesquisa.js"></script>
+    <script src="js/dropdowns.js"></script>
+    <script src="js/carousel-slider.js"></script>
+    <script src="js/marcas.js"></script>
     <script src="js/menumobile.js"></script>
     <script src="js/foryouAnimals.js"></script>
     <script src="js/petsServices.js"></script>
-    <script src="js/teste.js"></script>
 <?php
     include("blades/footer.php");
 ?>

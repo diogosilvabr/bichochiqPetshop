@@ -11,6 +11,7 @@ html {
 
 body {
     background-color: var(--azulGelo);
+    overflow-x: hidden;
 }
 
 a,
@@ -318,11 +319,283 @@ li {
     cursor: pointer;
 }
 
-.subtotal-price__finalize svg { 
+.subtotal-price__finalize svg {
     width: 3rem;
     height: 3rem;
 }
 
+.login-modal {
+    display: none;
+    max-width: 51.5rem;
+    width: 100%;
+    min-height: 55rem;
+    border-radius: .8rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--branco);
+    z-index: 2;
+}
+
+.login-modal.active {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 0;
+}
+
+.login-modal__title {
+    padding: 2rem 4rem;
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 4.3rem;
+    color: var(--preto80);
+    border-bottom: .1rem solid var(--cinza);
+}
+
+.form {
+    padding: 2rem 4rem;
+    height: 100%;
+}
+
+.form-container__create {
+    display: block;
+}
+
+.form-container__congratulations {
+    display: none;
+    justify-content: center;
+}
+
+.congratulations-dog {
+    position: relative;
+    z-index: 1;
+}
+
+.btt-dog {
+    width: 100%;
+    height: 7rem;
+    position: absolute;
+    top: 29.4rem;
+}
+
+.btt-dog-h {
+    width: 100%;
+    min-height: 11.5rem;
+    position: absolute;
+    top: 36.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+.btt-dog-h p {
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 4.3rem;
+    color: var(--branco);
+}
+
+.btt-dog-h p span {
+    font-weight: 900;
+}
+
+.comeback {
+    width: 100%;
+    min-height: 7.5rem;
+    position: absolute;
+    top: 47.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 2rem;
+}
+
+.comeback a {
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    text-decoration-line: underline;
+    color: var(--preto80);
+}
+
+.login-account__text {
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    color: var(--preto80);
+}
+
+.login-account__link {
+    text-decoration: underline;
+    color: var(--azul);
+}
+
+.login-account {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.login-input {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.login-input__label {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    color: var(--preto80);
+}
+
+.login-input__input {
+    outline: 0;
+    border: 0.1rem solid var(--cinza);
+    background-color: var(--azulGelo);
+    height: 5rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border-radius: .5rem;
+}
+
+.remember {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.form-check input[type="checkbox"] {
+    height: 2rem;
+    width: 2rem;
+    background-color: var(--cinza);
+    border-radius: 8.5rem;
+}
+
+.form-check label {
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    color: var(--preto80);
+}
+
+.remember a {
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    color: var(--preto80);
+}
+
+.doLogin-social-media {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.submit-button {
+    width: 14rem;
+    height: 4.5rem;
+    border: 0;
+    outline: 0;
+    border-radius: .8rem;
+    background-color: var(--azul);
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.7rem;
+    text-align: center;
+    color: var(--branco);
+    cursor: pointer;
+}
+
+.divisory {
+    width: .2rem;
+    height: 4.5rem;
+    background-color: var(--cinza);
+}
+
+.social-medias {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.social-medias a {
+    display: flex;
+    width: 6rem;
+    height: 4.5rem;
+    background-color: var(--azul);
+    align-items: center;
+    justify-content: center;
+    border-radius: .8rem;
+}
+
+.social-medias a svg {
+    width: 3rem;
+    height: 3rem;
+}
+
+.social-medias a svg path {
+    fill: var(--branco);
+}
+
+.create-account {
+    display: none;
+    max-width: 51.5rem;
+    width: 100%;
+    min-height: 55rem;
+    border-radius: .8rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--branco);
+    z-index: 2;
+}
+
+.create-account.active {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 0;
+    overflow: hidden;
+}
+
+.important-create {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.important {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.important p {
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    color: var(--cinzaSombra);
+}
 
 /*******************************
     0.0.1 NAVBAR
@@ -1076,6 +1349,9 @@ li {
 .description {
     width: 100%;
     padding: 2rem 2rem 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .description h2 {
@@ -1090,6 +1366,18 @@ li {
     font-size: 2.8rem;
     line-height: 3.6rem;
     color: var(--branco);
+}
+
+.description a {
+    width: 11rem;
+    display: flex;
+    padding: .5rem;
+    background-color: var(--amareloOuro);
+    color: var(--azul);
+    align-items: center;
+    justify-content: center;
+    border-radius: .8rem;
+    font-size: 1.6rem;
 }
 
 .image {
@@ -1130,7 +1418,7 @@ li {
 .all-container {
     max-width: 120rem;
     width: 100%;
-    height: 100%;
+    min-height: 50rem;
     padding-top: 5rem;
     margin: 0 auto;
     background-color: var(--branco);
@@ -1168,7 +1456,7 @@ li {
     justify-content: center;
     gap: 2rem;
 
-    /* exemplo de tamanho mÃ­nimo */
+    /* exemplo de tamanho mÃƒÂ­nimo */
 }
 
 .frete-links li {
@@ -1176,7 +1464,7 @@ li {
     gap: .5rem;
     align-items: center;
     /* max-width: 20rem; */
-    /* exemplo de tamanho mÃ­nimo para cada li */
+    /* exemplo de tamanho mÃƒÂ­nimo para cada li */
 }
 
 
@@ -1199,7 +1487,7 @@ li {
     padding: 4rem;
     background: url('../imgs/Petshop_files/bg-patas.png');
     background-repeat: repeat;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 
@@ -1699,8 +1987,7 @@ li {
 
 .food-animals__container {
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: hidden;
     display: flex;
     align-items: center;
     gap: 3rem;
@@ -1819,16 +2106,6 @@ li {
 .limit {
     padding-right: max(calc((100vw - 124.5rem)/2 + max(3%, 2rem)), 2rem)
 }
-
-
-
-
-
-
-
-
-
-
 
 .titulo-cards {
     text-align: center;
@@ -2435,6 +2712,9 @@ li {
         bottom: 0;
     }
 
+    .text {
+        width: 100%;
+    }
 
     .owl-carousel {
         display: flex;
@@ -2531,10 +2811,6 @@ li {
         height: 35rem;
     }
 
-    .text {
-        width: 35%;
-    }
-
     .description h2 {
         font-size: 2.2rem;
     }
@@ -2543,13 +2819,28 @@ li {
         font-size: 1.5rem;
     }
 
+    .doLogin-social-media {
+        flex-direction: column;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+
+    .divisory {
+        width: 100%;
+        height: .2rem;
+    }
+
+    .social-medias {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+
 }
 
 @media (max-width: 800px) {
-    .text {
-        display: none;
-    }
-
     .owl-carousel {
         flex-direction: column;
     }
@@ -2627,8 +2918,11 @@ li {
     .foryou-animals__card img {
         width: 90%;
     }
-}
 
+    .remember {
+        justify-content: center;
+    }
+}
 
 /* grid-objetos */
 .grid-objetos {
@@ -2644,3 +2938,271 @@ li {
     margin: 0 auto;
     background-color: var(--branco);
 }
+
+.products-super {
+    width: 100%;
+}
+
+.super-title {
+    width: 100%;
+    height: 10.5rem;
+    background-color: var(--azul);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+    font-size: 4.8rem;
+    line-height: 6.5rem;
+    color: var(--branco);
+}
+
+.super-order {
+    width: 100%;
+    min-height: 6.2rem;
+    background-color: var(--amareloOuro);
+}
+
+.super-order__container {
+    max-width: 120rem;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.super-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.super-links a{
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    color: var(--pretoPuro);
+}
+
+.super-order-alpha {
+    width: 100%;
+    background-color: var(--branco);
+    border-radius: .5rem;
+    padding: 0 4rem;
+    display: flex;
+    align-items: center;
+}
+
+.order {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.order-alpha {
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    color: var(--preto80);
+}
+
+.super-drop {
+    display: inline-block;
+}
+
+.filters {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-list {
+    display: flex;
+    align-items: center;
+}
+
+.filter-list li {
+    height: 2.5rem;
+    padding: 0 .5rem;
+    border-left: .2rem solid var(--preto80);
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    color: var(--preto80);
+    display: flex;
+    align-items: center;
+}
+
+.more-recommended-products {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.prev-next-bests {
+    width: 100%;
+    height: 10rem;
+    background-color: var(--amareloOuro);
+    margin: 4rem 0;
+    border-radius: 0 0 .5rem .5rem;
+    position: relative;
+}
+
+.line-white {
+    display: block;
+    width: 100%;
+    height: 0.5rem;
+    background-color: var(--branco);
+    position: absolute;
+    top: 2rem;
+}
+
+.prev-next {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.recommended--buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .5rem;
+}
+
+.recommended--buttons button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.pages-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: .5rem;
+}
+
+.page {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--branco);
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    background-color: var(--azul);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .8rem;
+    cursor: pointer;
+}
+
+/* DETALHES-PRODUTO */
+.product-name {
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.2rrem;
+    color: var(--preto80);
+}
+
+.details-product {
+    width: 100%;
+    height: 50rem;
+    padding: 4rem;
+    display: flex;
+}
+
+.detail-product__img {
+    width: 45rem;
+}
+
+.detail-product__img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 100% 0;
+}
+
+.details-product__details {
+    width: calc(100% - 45rem);
+    display: flex;
+    flex-direction: column;
+}
+
+.detail__name-code h4 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    color: var(--preto80);
+}
+
+.detail__name-code p { 
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    color: var(--preto80);
+}
+
+.detail__price {
+    width: min-content;
+    position: relative;
+}
+
+.detail-price__defined {
+    font-weight: 800;
+    font-size: 4.8rem;
+    line-height: 6.5rem;
+    color: var(--preto80);
+}
+
+.detail-price__cutted {
+    font-weight: 800;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    text-decoration-line: line-through;
+    color: var(--cinza);
+    position: absolute;
+    top: -.5rem;
+    right: 0;
+}
+
+.size-specified {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.size-quantity {
+
+}
+
+.specifieds {
+    
+}
+
+
+
+.you-pet-need {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 0;
+}
+

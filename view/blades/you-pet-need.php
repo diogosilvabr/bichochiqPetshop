@@ -1,8 +1,8 @@
-<div class="favorite-products">
+<div class="you-pet-need">
   <div class="title-about">
     <div class="dashed-title"></div>
-    <h1>Descubra os produtos <span>favoritos dos nossos clientes</span></h1>
-    <p>e deixe seu pet feliz como nunca!</p>
+    <h1>Aqui você encontra tudo <span>o que seu pet precisa</span></h1>
+    <p>produtos de qualidade e preços acessíveis!</p>
   </div>
 
   <!-- css - 0.7.1 -->
