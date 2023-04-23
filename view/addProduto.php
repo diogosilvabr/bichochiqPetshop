@@ -52,6 +52,7 @@ include("blades/header.php");
 ?>
 <div class="container">
     <h1 class="display-4">Adicionar Produto</h1><hr>
+    <a class="btn btn-success" href="dashboardProduto.php">Voltar</a><br><br>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
         <div class="form-group">
             <label for="nome">Nome do Produto:</label>

@@ -53,13 +53,6 @@ function limparEntrada($entrada)
 				<input class="btn btn-primary" type="submit" name="buscar" value="Buscar">
 			</form>
 		</div>
-
-	<!-- <h2>Excluir Produto</h2>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-	<label>ID do Produto:</label><br>
-	<input type="number" name="id"><br>
-	<input type="submit" name="excluir" value="Excluir">
-</form> -->
 	<?php
 	// Verifica se o formulário foi enviado
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -101,7 +94,7 @@ function limparEntrada($entrada)
 						</form>
 					</td>
 					<td>
-						<form method="get" action="updateProduto.php">
+						<form method="post" action="updateProduto.php">
 							<input type="hidden" name="id" value="<?php echo $produto['_id']; ?>">
 							<input class="btn btn-success"type="submit" value="Editar">
 						</form>

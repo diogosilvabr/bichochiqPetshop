@@ -53,6 +53,10 @@ function buscarProdutoPorNome($nome)
 
 function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade, $especie, $categoria)
 {
+    if (!preg_match('/^[0-9a-fA-F]{24}$/', $id)) {
+        throw new InvalidArgumentException('Valor inválido para ID do produto');
+    }
+    
     global $colecao;
     $atualizacao = array(
         '$set' => array(

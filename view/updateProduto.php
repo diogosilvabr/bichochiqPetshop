@@ -30,10 +30,10 @@ include("blades/header.php");
     <div class="container">
         <h1 class="display-4">Atualizar Produto</h1>
         <?php 
-            $idProduto = $_GET['id'];
+            $idProduto = $_POST['id'];
             $produtos = $colecao->findOne(['_id' => new MongoDB\BSON\ObjectID($idProduto)]); ?>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
-            <input type="text" name="_id" value="<?php echo $idProduto ?>">
+            <input type="text" name="id" value="<?php echo $idProduto; ?>">
             <div class="form-group">
                 <label for="nome">Nome do Produto:</label>
                 <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $produtos['nome']; ?>">
@@ -101,7 +101,7 @@ include("blades/header.php");
 
 <?php
 if (isset($_POST["atualizar"])) {
-    $id = '';
+    $id = limparEntrada($_POST["id"]);
     $nome = limparEntrada($_POST["nome"]);
     $preco = floatval(limparEntrada($_POST["preco"]));
     $descricao = limparEntrada($_POST["descricao"]);
@@ -129,12 +129,12 @@ if (isset($_POST["atualizar"])) {
     }
 }
 
-if (isset($_POST["atualizar"])) {
-    $produtoAtualizado = atualizarProduto($id, $nome, $preco, $descricao, $quantidade, $tamanho, $especie, $categoria);
-    echo "Produto atualizado com sucesso. Número de produtos atualizados:";
-} else {
-    echo "Erro ao atualizar produto";
-}
+    if(isset($_POST["atualizar"])) {
+        $produtoAtualizado = atualizarProduto($id, $nome, $preco, $descricao, $quantidade, $tamanho, $especie, $categoria);
+        echo "Produto atualizado com sucesso. Número de produtos atualizados:";
+        } else {
+            echo "Erro ao atualizar produto";
+    }
 ?>
 <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <?php
