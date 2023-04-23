@@ -51,7 +51,7 @@ function buscarProdutoPorNome($nome)
     }
 }
 
-function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade, $especie, $categoria)
+/* function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade, $especie, $categoria)
 {
     global $colecao;
     $atualizacao = array(
@@ -67,7 +67,7 @@ function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade,
     );
     $resultado = $colecao->updateOne(["_id" => new MongoDB\BSON\ObjectId($id)], $atualizacao);
     return $resultado->getModifiedCount();
-}
+} */
 
 function deletarProduto($id)
 {

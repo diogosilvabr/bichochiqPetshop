@@ -18,4 +18,5 @@ $bancoDeDados = $cliente->selectDatabase($mongoDBNome);
 
 // Seleciona a coleção
 $colecao = $bancoDeDados->selectCollection($mongoDBColecao);
+global $colecao;
 ?>

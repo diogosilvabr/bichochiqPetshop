@@ -6,8 +6,12 @@ include("blades/session.php");
 require '../model/database.php';
 require '../controller/crudProdutos.php';
 require_once '../vendor/autoload.php';
+?>
 
+<link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+<script src="../vendor/components/jquery/jquery.min.js"></script>
 
+<?php
 // Função para limpar entrada do usuário
 function limparEntrada($entrada)
 {
@@ -25,7 +29,6 @@ function limparEntrada($entrada)
 	}
 }
 ?>
-
 <div class="container">
 	<h1 class="display-4">Gerenciamento de Produtos</h1>
 	<!-- Nav tabs -->
@@ -34,10 +37,10 @@ function limparEntrada($entrada)
 			<a class="nav-link active" href="#buscar" data-toggle="tab">Buscar Produtos</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#cadastrar" data-toggle="tab">Cadastrar Produto</a>
+			<a class="nav-link" href="addProduto.php" data-toggle="tab">Cadastrar Produto</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#atualizar" data-toggle="tab">Atualizar Produto</a>
+			<a class="nav-link" href="updateProduto.php" data-toggle="tab">Atualizar Produto</a>
 		</li>
 	</ul>
 
@@ -50,72 +53,6 @@ function limparEntrada($entrada)
 				<input class="btn btn-primary" type="submit" name="buscar" value="Buscar">
 			</form>
 		</div>
-
-		<!-- <div class="tab-pane" id="cadastrar"> -->
-			<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
-				<div class="form-group">
-					<label for="nome">Nome do Produto:</label>
-					<input type="text" class="form-control" id="nome" name="nome">
-				</div>
-				<div class="form-group">
-					<label for="preco">Preço do Produto:</label>
-					<input type="text" class="form-control" id="preco" name="preco">
-				</div>
-				<div class="form-group">
-					<label for="descricao">Descrição do Produto:</label>
-					<textarea class="form-control" id="descricao" name="descricao"></textarea>
-				</div>
-				<div class="form-group">
-					<label for="tamanho">Tamanho:</label>
-					<input type="text" class="form-control" id="tamanho" name="tamanho">
-				</div>
-				<div class="form-group">
-					<label for="quantidade">Quantidade do Produto:</label>
-					<input type="number" class="form-control" id="quantidade" name="quantidade">
-				</div>
-				<div class="form-group">
-					<label>Espécies:</label><br>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" name="especie[]" id="cachorro" value="cachorro">
-						<label class="form-check-label" for="cachorro">CÃES</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" name="especie[]" id="gato" value="gato">
-						<label class="form-check-label" for="gato">GATOS</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" name="especie[]" id="ave" value="ave">
-						<label class="form-check-label" for="ave">AVES</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" name="especie[]" id="roedor" value="roedor">
-						<label class="form-check-label" for="roedor">ROEDORES</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" name="especie[]" id="peixe" value="peixe">
-						<label class="form-check-label" for="peixe">PEIXES</label>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="categoria">Categoria:</label>
-					<select class="form-control" id="categoria" name="categoria">
-						<option value=""></option>
-						<option value="banho&tosa">BANHO & TOSA</option>
-						<option value="alimentacao">ALIMENTAÇÃO</option>
-						<option value="medicamentos">MEDICAMENTOS</option>
-						<option value="acessorios">ACESSÓRIOS</option>
-						<option value="brinquedos">BRINQUEDOS</option>
-						<option value="cuidados">CUIDADOS</option>
-					</select>
-				</div>
-				<label for="imagem">Imagem do Produto:</label>
-				<div class="custom-file">
-					<input type="file" class="custom-file-input" id="imagem" name="imagem">
-					<label class="custom-file-label" for="imagem">Escolher arquivo</label>
-				</div>
-				<button type="submit" class="btn btn-primary">Cadastrar</button>
-			</form>
-		<!-- </div> -->
 
 		<div class="tab-pane" id="atualizar">
 			<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -230,6 +167,13 @@ function limparEntrada($entrada)
 							<input class="btn btn-danger"type="submit" name="excluir" value="Excluir">
 						</form>
 					</td>
+					<td>
+						<form method="get" action="updateProduto.php">
+							<input type="hidden" name="id" value="<?php echo $produto['_id']; ?>">
+							<input class="btn btn-success"type="submit" value="Editar">
+						</form>
+						
+					</td>
 				</tr>
 				<?php
 					}
@@ -298,5 +242,5 @@ function limparEntrada($entrada)
 			}
 		}
 	?>
-
+	<script src="../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<?php include("blades/footer.php"); ?>
