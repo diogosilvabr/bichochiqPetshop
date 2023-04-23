@@ -11,11 +11,13 @@ dropdowns.forEach((dropdown) => {
   const dropdownContents = dropdown.querySelector(".dropdown-content");
   const dropBtn = dropdown.querySelector(".dropbtn");
   const dropbtn__account = dropdown.querySelector(".dropbtn__account");
-  const user = dropdown.querySelector('.user');
+  const user = dropdown.querySelector(".user");
   const menuButton = dropdown.querySelector(".menu-button");
   const dropbtnPath = dropdown.querySelector(".dropbtn > svg path");
   const userPath = dropdown.querySelector(".dropbtn__account > svg path");
-  const menuHamburguerSpans = dropdown.querySelectorAll(".menu-hamburguer > span");
+  const menuHamburguerSpans = dropdown.querySelectorAll(
+    ".menu-hamburguer > span"
+  );
 
   if (dropdownContents) {
     dropdownContents.style.height = 0;
@@ -23,7 +25,7 @@ dropdowns.forEach((dropdown) => {
 
   if (user) {
     user.style.height = 0;
-    userPath.setAttribute('fill', 'var(--branco)');
+    userPath.setAttribute("fill", "var(--branco)");
   }
 
   dropdown.addEventListener("mouseenter", () => {
@@ -34,7 +36,7 @@ dropdowns.forEach((dropdown) => {
     }
 
     if (user) {
-      user.classList.add('show-user');
+      user.classList.add("show-user");
       user.style.height = user.scrollHeight + "px";
     }
 
@@ -47,7 +49,7 @@ dropdowns.forEach((dropdown) => {
       });
       dropdownContents.classList.add("show");
       dropdownContents.style.height = dropdownContents.scrollHeight + "px";
-      }
+    }
   });
 
   dropdown.addEventListener("mouseleave", () => {
@@ -158,7 +160,6 @@ function proximoSlide() {
 
 setInterval(proximoSlide, intervalo);
 
-
 // Selecionando os elementos da página
 const sliderContainer = document.querySelector(".slider-container");
 const sliderContent = document.querySelector(".slider-content");
@@ -181,72 +182,85 @@ function slide(direction) {
   } else if (currentPosition > maxPosition) {
     currentPosition = 0;
   }
-  sliderContent.style.transform = `translateX(-${currentPosition * (cardWidth + spacing)}px)`;
+  sliderContent.style.transform = `translateX(-${
+    currentPosition * (cardWidth + spacing)
+  }px)`;
 }
 
 prevButton.addEventListener("click", () => slide(-1));
 nextButton.addEventListener("click", () => slide(1));
 
-// const sliderContainer = document.querySelector('.slider-container');
-// const sliderContent = document.querySelector('.slider-content');
-// const prevButton = document.querySelector('.prev-button');
-// const nextButton = document.querySelector('.next-button');
-// const productCard = document.querySelectorAll('.product-card');
-// const cardWidth = 212;
-// const minTranslate = 0;
-// console.log(productCard.length)
-// let maxTranslate = (productCard.length - 5) * cardWidth;
-// let currentPosition = 0;
-
-// function showPrev() {
-//   currentPosition -= cardWidth;
-//   if (currentPosition < minTranslate) {
-//     currentPosition = minTranslate;
-//   }
-//   sliderContent.style.transform = `translateX(${-currentPosition}px)`;
-// }
-
-// function showNext() {
-//   currentPosition += cardWidth;
-//   if (currentPosition > maxTranslate) {
-//     currentPosition = maxTranslate;
-//   }
-//   sliderContent.style.transform = `translateX(${-currentPosition}px)`;
-// }
-
-// prevButton.addEventListener('click', showPrev);
-// nextButton.addEventListener('click', showNext);
-
-
-
-
 // carrossel de marcas
-const container = document.querySelector('.food-animals__container');
+const container = document.querySelector(".food-animals__container");
 let isDown = false;
 let startX;
 let scrollLeft;
 
-container.addEventListener('mousedown', (e) => {
+container.addEventListener("mousedown", (e) => {
   isDown = true;
-  container.classList.add('active');
+  container.classList.add("active");
   startX = e.pageX - container.offsetLeft;
   scrollLeft = container.scrollLeft;
 });
 
-container.addEventListener('mouseleave', () => {
+container.addEventListener("mouseleave", () => {
   isDown = false;
-  container.classList.remove('active');
+  container.classList.remove("active");
 });
 
-container.addEventListener('mouseup', () => {
+container.addEventListener("mouseup", () => {
   isDown = false;
-  container.classList.remove('active');
+  container.classList.remove("active");
 });
 
-container.addEventListener('mousemove', (e) => {
+container.addEventListener("mousemove", (e) => {
   if (!isDown) return;
   e.preventDefault();
   const x = e.pageX - container.offsetLeft;
   const walk = (x - startX) * 1.5;
   container.scrollLeft = scrollLeft - walk;
 });
+
+const activeModalLogins = document.querySelectorAll('#active-modal-login');
+const formCreate = document.querySelector('.form-container__create');
+const formCongratulation = document.querySelector('.form-container__congratulations');
+
+activeModalLogins.forEach((activeModalLogin) => {
+  activeModalLogin.addEventListener('click', (e) => {
+    
+    if (menu.contains(e.target)) {
+      menu.classList.remove("active");
+    }
+
+    menuScreen.classList.add('active');
+    const loginModal = document.querySelector('.login-modal');
+    const createAccount = document.querySelector('.create-account');
+    loginModal.classList.add('active');
+  
+    menuScreen.addEventListener("click", function (event) {
+      if (!loginModal.contains(event.target) && !createAccount.contains(event.target)) {
+        menuScreen.classList.remove("active");
+        loginModal.classList.remove("active");
+        createAccount.classList.remove("active");
+      }
+    });
+  
+    const linkCreateAccount = document.querySelector('.login-account__link');
+  
+    linkCreateAccount.addEventListener('click', () => {
+      loginModal.classList.remove('active');
+      createAccount.classList.add('active');
+      formCreate.style.display = 'block';
+      
+      const cadastrarUsuario = document.querySelector('#cadastrarUsuario');
+      cadastrarUsuario.addEventListener('click', (e) => {
+        e.preventDefault();
+        formCreate.style.display = 'none';
+        formCongratulation.style.display = 'flex';  
+      });
+    });
+
+
+  
+  });
+})
