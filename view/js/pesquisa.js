@@ -222,6 +222,9 @@ container.addEventListener("mousemove", (e) => {
 });
 
 const activeModalLogins = document.querySelectorAll('#active-modal-login');
+const formCreate = document.querySelector('.form-container__create');
+const formCongratulation = document.querySelector('.form-container__congratulations');
+
 activeModalLogins.forEach((activeModalLogin) => {
   activeModalLogin.addEventListener('click', (e) => {
     
@@ -247,7 +250,17 @@ activeModalLogins.forEach((activeModalLogin) => {
     linkCreateAccount.addEventListener('click', () => {
       loginModal.classList.remove('active');
       createAccount.classList.add('active');
+      formCreate.style.display = 'block';
+      
+      const cadastrarUsuario = document.querySelector('#cadastrarUsuario');
+      cadastrarUsuario.addEventListener('click', (e) => {
+        e.preventDefault();
+        formCreate.style.display = 'none';
+        formCongratulation.style.display = 'flex';  
+      });
     });
+
+
   
   });
 })
