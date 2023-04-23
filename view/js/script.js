@@ -229,7 +229,7 @@ cards.forEach((card) => {
     closeCard();
   });
 
-  // para quantidade
+  // para quantidade de produtos do card
   const decreaseBtn = card.querySelector('[data-action="decrease"]');
   const increaseBtn = card.querySelector('[data-action="increase"]');
   const inputQuantity = card.querySelector(".input-quantity");
@@ -246,3 +246,26 @@ cards.forEach((card) => {
     inputQuantity.value = currentValue + 1;
   });
 });
+
+// para quantidade de produtos na pagina de detalhes
+const sizeQuantitys = document.querySelectorAll('.size-quantity');
+  sizeQuantitys.forEach((sizeQuantity) => {
+    
+    const decreaseBtn = sizeQuantity.querySelector('[data-action="decrease"]');
+    const increaseBtn = sizeQuantity.querySelector('[data-action="increase"]');
+    const inputQuantity = sizeQuantity.querySelector(".input-quantity");
+
+    decreaseBtn.addEventListener("click", () => {
+      let currentValue = parseInt(inputQuantity.value);
+      if (currentValue > 1) {
+        inputQuantity.value = currentValue - 1;
+      }
+    });
+      
+    increaseBtn.addEventListener("click", () => {
+      let currentValue = parseInt(inputQuantity.value);
+      inputQuantity.value = currentValue + 1;
+    }); 
+  
+});
+

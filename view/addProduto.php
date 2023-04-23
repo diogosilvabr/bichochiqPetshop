@@ -2,7 +2,12 @@
 include("blades/session.php");
 require_once '../model/database.php';
 require_once '../vendor/autoload.php';
+?>
+<link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+<script src="../vendor/components/jquery/jquery.min.js"></script>
 
+<?php
+// FUNÇÃO RESPONSÁVEL PELO CADASTRO DO PRODUTO
 function criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especies, $categoria, $nomeImagem)
 {   
     global $colecao;
@@ -46,6 +51,7 @@ function limparEntrada($entrada)
 include("blades/header.php");
 ?>
 <div class="container">
+    <h1 class="display-4">Adicionar Produto</h1><hr>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
         <div class="form-group">
             <label for="nome">Nome do Produto:</label>
@@ -106,14 +112,10 @@ include("blades/header.php");
         <div class="custom-file">
             <input type="file" class="custom-file-input" id="imagem" name="imagem">
             <label class="custom-file-label" for="imagem">Escolher arquivo</label>
-        </div>
+        </div><br>
         <button type="submit" name="cadastrar" class="btn btn-primary">Cadastrar</button>
     </form>
 </div>
-
-
-
-
 
 <?php 
 
@@ -154,5 +156,8 @@ if (isset($_POST["cadastrar"])) {
         echo "Erro ao cadastrar o produto.";
     }
 }
+?>
+<script src="../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<?php
 include("blades/footer.php"); 
 ?>
