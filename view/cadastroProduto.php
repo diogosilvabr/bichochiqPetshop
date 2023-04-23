@@ -5,6 +5,8 @@ include("blades/session.php");
 // IMPORTA O ARQUIVO DE CONEXÃO E O ARQUIVO RESPONSÁVEL PELAS FUNÇÕES DO CRUD
 require '../model/database.php';
 require '../controller/crudProdutos.php';
+require_once '../vendor/autoload.php';
+
 
 // Função para limpar entrada do usuário
 function limparEntrada($entrada)
@@ -49,7 +51,7 @@ function limparEntrada($entrada)
 			</form>
 		</div>
 
-		<div class="tab-pane" id="cadastrar">
+		<!-- <div class="tab-pane" id="cadastrar"> -->
 			<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="nome">Nome do Produto:</label>
@@ -193,46 +195,49 @@ function limparEntrada($entrada)
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		if (isset($_POST["busca"])) { // Verifica se a variável $_POST["busca"] está definida
 			$palavraChave = limparEntrada($_POST["busca"]);
-			$resultadoBusca = buscarProdutoPorNome($palavraChave);
-			if (!empty($resultadoBusca)) {
-				echo "Resultado da busca:<br>";
-				foreach ($resultadoBusca as $produto) {
-					echo "<table border='1'>";
-					echo "<thead>";
-					echo "<tr>";
-					echo "<th>ID</th>";
-					echo "<th>Nome</th>";
-					echo "<th>Preço</th>";
-					echo "<th>Descrição</th>";
-					echo "<th>Tamanho</th>";
-					echo "<th>Quantidade</th>";
-					echo "<th>Espécie</th>";
-					echo "<th>Categoria</th>";
-					echo "<th>Opções</th>";
-					echo "</tr>";
-					echo "</thead>";
-					echo "<tbody>";
-					echo "<tr>";
-					echo "<td>" . $produto['_id'] . "</td>";
-					echo "<td>" . $produto['nome'] . "</td>";
-					echo "<td>" . $produto['preco'] . "</td>";
-					echo "<td>" . $produto['descricao'] . "</td>";
-					echo "<td>" . $produto['tamanho'] . "</td>";
-					echo "<td>" . $produto['quantidade'] . "</td>";
-					echo "<td>" . $produto['especie'] . "</td>";
-					echo "<td>" . $produto['categoria'] . "</td>";
-					echo "<td>";
-					echo "<form method='post' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "'>";
-					echo "<input type='number' name='id' value='" . $produto['_id'] . "'>";
-					echo "<input type='submit' name='excluir' value='Excluir'>";
-					echo "</form>";
-					echo "</td>";
-					echo "</tr>";
-					echo "</tbody>";
-					echo "</table>";
-					echo "<br>";
-					echo "</div>";
+			$resultadoBusca = buscarProdutoPorNome($palavraChave); ?>
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nome</th>
+							<th>Preço</th>
+							<th>Descrição</th>
+							<th>Tamanho</th>
+							<th>Quantidade</th>
+							<th>Espécie</th>
+							<th>Categoria</th>
+						</tr>
+					</thead>
+					<tbody>
+			<?php
+				if (!empty($resultadoBusca)) {
+					foreach ($resultadoBusca as $produto) {
+				?>
+				<tr>
+					<td><?php echo $produto['_id']; ?></td>
+					<td><?php echo $produto['nome']; ?></td>
+					<td><?php echo $produto['preco']; ?></td>
+					<td><?php echo $produto['descricao']; ?></td>
+					<td><?php echo $produto['tamanho']; ?></td>
+					<td><?php echo $produto['quantidade']; ?></td>
+					<td><?php echo $produto['especie']; ?></td>
+					<td><?php echo $produto['categoria']; ?></td>
+					<td>
+						<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+							<input type="hidden" name="id" value="<?php echo $produto['_id']; ?>">
+							<input class="btn btn-danger"type="submit" name="excluir" value="Excluir">
+						</form>
+					</td>
+				</tr>
+				<?php
+					}
 				}
+				?>
+			</tbody>
+		</table>
+	</div> <?php
 			} else {
 				echo "Nenhum produto encontrado com a palavra-chave informada.";
 			}
@@ -292,6 +297,6 @@ function limparEntrada($entrada)
 				echo "Erro ao deletar o produto.";
 			}
 		}
-	}
 	?>
+
 	<?php include("blades/footer.php"); ?>
