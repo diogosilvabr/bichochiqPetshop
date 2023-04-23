@@ -115,7 +115,7 @@ function limparEntrada($entrada)
 				</div>
 				<button type="submit" class="btn btn-primary">Cadastrar</button>
 			</form>
-		</div>
+		<!-- </div> -->
 
 		<div class="tab-pane" id="atualizar">
 			<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
