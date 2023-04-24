@@ -49,7 +49,7 @@
 						<input class="form-control" type="text" name="busca" placeholder="Digite uma palavra-chave">
 					</div>
 					<div class="form-group">
-						<input class="btn btn-primary" type="submit" name="buscar" value="Buscar">
+						<input class="btn mt-2" type="submit" name="buscar" value="Buscar" style="background-color: #1D9BF0; border-color: #1D9BF0;">
 					</div>
 				</form>
 			</div>
@@ -90,7 +90,7 @@
 											<td>
 												<form method="post" action="updateProduto.php">
 													<input type="hidden" name="id" value="<?php echo $produto['_id']; ?>">
-													<input class="btn btn-success" type="submit" value="Editar">
+													<input class="btn" type="submit" value="Editar" style="background-color: #1D9BF0; border-color: #1D9BF0;">
 												</form>
 											</td>
 											<td>
