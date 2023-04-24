@@ -32,7 +32,7 @@ include("../controller/crudProdutos.php");
                 <div class="preco">
                   <p class="parcelas">
                     Ou em 12x de
-                    <?php echo round($produto->preco/12); ?>
+                    <?php echo round($produto->preco/12, 2); ?>
                   </p>
                   <p class="preco-avista">
                     R$
