@@ -5,33 +5,18 @@ require_once '../vendor/autoload.php';
 require_once '../controller/crudProdutos.php';
 ?>
 
+<!-- IMPORTA A BIBLIOTECA BOOTSTRAP E JQUERY-->
 <link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
 <script src="../vendor/components/jquery/jquery.min.js"></script>
 
-<?php
-function limparEntrada($entrada)
-{
-    if (is_array($entrada)) {
-        // se a entrada for um array, cria um novo array para armazenar os valores limpos
-        $saida = array();
-        foreach ($entrada as $chave => $valor) {
-            // remove espaços em branco no início e no fim da string
-            $saida[$chave] = is_string($valor) ? trim($valor) : $valor;
-        }
-        return $saida;
-    } else {
-        // se a entrada não for um array, remove espaços em branco no início e no fim da string
-        return is_string($entrada) ? trim($entrada) : $entrada;
-    }
-}
-
-include("blades/header.php");
-?>
+<?php include("blades/header.php"); ?>
 
 <?php
-        $idProduto = $_POST['id'];
-        $produtos = $colecao->findOne(['_id' => new MongoDB\BSON\ObjectID($idProduto)]);
+// RECEBE A ID DO PRODUTO E BUSCA NO MONGODB O PRODUTO CORRESPONDENTE
+$idProduto = $_POST['id'];
+$produtos = $colecao->findOne(['_id' => new MongoDB\BSON\ObjectID($idProduto)]);
 
+// SE O BOTÃO 'favotirar' for acionado na página dashboardProduto.php guarda os valores resgatados via POST e armazena nas variáveis
 if (isset($_POST["favoritar"])) {
     $id = "";
     $nome = limparEntrada($produtos['nome']);
@@ -61,26 +46,28 @@ if (isset($_POST["favoritar"])) {
     }
 }
 
+// SE O BOTÃO 'favotirar' for acionado na página dashboardProduto.php executa a função addFavorito
 if (isset($_POST["favoritar"])) {
-    $id = addFavorito($nome, $preco, $descricao,  $tamanho_array, $quantidade, $especie, $categoria, $nomeImagem);
+    $id = addFavorito($nome, $preco, $descricao, $tamanho_array, $quantidade, $especie, $categoria, $nomeImagem);
 } else {
     /* echo "Erro ao atualizar produto"; */
 }
 
+// DECLARAÇÃO DA FUNÇÃO addFavorito utilizada no código
 function addFavorito($nome, $preco, $descricao, $tamanho, $quantidade, $especies, $categoria, $nomeImagem)
-{   
+{
     global $colecaoFav;
-    
+
     // Verifica se $especies é um array
     if (is_array($especies)) {
         // Converte o array em uma string com vírgulas entre os valores
         $especies = implode(',', $especies);
 
-    } 
-     if (is_array($tamanho)) {
+    }
+    if (is_array($tamanho)) {
         $tamanho = implode(',', $tamanho);
-    } 
-    
+    }
+
     $favorito = array(
         "nome" => $nome,
         "preco" => $preco,
@@ -95,8 +82,26 @@ function addFavorito($nome, $preco, $descricao, $tamanho, $quantidade, $especies
     return $resultado->getInsertedId();
 }
 
+// DECLARAÇÃO DA FUNÇÃO limparEntrada utilizada no código
+function limparEntrada($entrada)
+{
+    if (is_array($entrada)) {
+        // se a entrada for um array, cria um novo array para armazenar os valores limpos
+        $saida = array();
+        foreach ($entrada as $chave => $valor) {
+            // remove espaços em branco no início e no fim da string
+            $saida[$chave] = is_string($valor) ? trim($valor) : $valor;
+        }
+        return $saida;
+    } else {
+        // se a entrada não for um array, remove espaços em branco no início e no fim da string
+        return is_string($entrada) ? trim($entrada) : $entrada;
+    }
+}
+
 ?>
+
+<!-- IMPORTA BIBLIOTECA JS BOOTSTRAP -->
 <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<?php
-include("blades/footer.php");
-?>
+
+<?php include("blades/footer.php"); ?>

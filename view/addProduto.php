@@ -1,61 +1,17 @@
-<?php
+<?php 
 include("blades/session.php");
 require_once '../model/database.php';
-require_once '../vendor/autoload.php';
-?>
+require_once '../vendor/autoload.php'; ?>
+
+<!-- IMPORTA A BIBLIOTECA BOOTSTRAP E JQUERY-->
 <link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
 <script src="../vendor/components/jquery/jquery.min.js"></script>
 
-<?php
-// FUNÇÃO RESPONSÁVEL PELO CADASTRO DO PRODUTO
-function criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especies, $categoria, $nomeImagem)
-{   
-    global $colecao;
-    
-    // Verifica se $especies é um array
-    if (!is_array($especies)) {
-        // Converte o array em uma string com vírgulas entre os valores
-        $especies = explode(',', $especies);
+<?php include("blades/header.php"); ?>
 
-    } 
-     if (is_array($tamanho)) {
-        $tamanho = implode(',', $tamanho);
-    } 
-    
-    $produto = array(
-        "nome" => $nome,
-        "preco" => $preco,
-        "descricao" => $descricao,
-        "tamanho" => $tamanho,
-        "quantidade" => $quantidade,
-        "especie" => $especies,
-        "categoria" => $categoria,
-        "imagem" => $nomeImagem
-    );
-    $resultado = $colecao->insertOne($produto);
-    return $resultado->getInsertedId();
-}
-
-function limparEntrada($entrada)
-{
-	if (is_array($entrada)) {
-		// se a entrada for um array, cria um novo array para armazenar os valores limpos
-		$saida = array();
-		foreach ($entrada as $chave => $valor) {
-			// remove espaços em branco no início e no fim da string
-			$saida[$chave] = is_string($valor) ? trim($valor) : $valor;
-		}
-		return $saida;
-	} else {
-		// se a entrada não for um array, remove espaços em branco no início e no fim da string
-		return is_string($entrada) ? trim($entrada) : $entrada;
-	}
-}
-
-include("blades/header.php");
-?>
-<div class="container">
-    <h1 class="display-4">Adicionar Produto</h1><hr>
+<div class="m-4">
+    <h1 class="display-4">Adicionar Produto</h1>
+    <hr>
     <a class="btn btn-success" href="dashboardProduto.php">Voltar</a><br><br>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
         <div class="form-group">
@@ -122,8 +78,9 @@ include("blades/header.php");
     </form>
 </div>
 
-<?php 
+<?php
 
+// SE O BOTÃO 'cadastrar' for clicado armazena os valores dos campos nas variáveis abaixo
 if (isset($_POST["cadastrar"])) {
     $id = "";
     $nome = limparEntrada($_POST["nome"]);
@@ -153,6 +110,7 @@ if (isset($_POST["cadastrar"])) {
     }
 }
 
+// SE O BOTÃO 'cadastrar' for clicado executa a função 'criarProduto' e armazena os valores das variáveis no banco
 if (isset($_POST["cadastrar"])) {
     $idProduto = criarProduto($nome, $preco, $descricao, $tamanho_array, $quantidade, $especie, $categoria, $nomeImagem);
     if ($idProduto) {
@@ -161,8 +119,55 @@ if (isset($_POST["cadastrar"])) {
         echo "Erro ao cadastrar o produto.";
     }
 }
+
+// DECLARAÇÃO DA FUNÇÃO PARA CADASTRO DO PRODUTO
+function criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especies, $categoria, $nomeImagem)
+{
+    global $colecao;
+
+    // Verifica se $especies é um array
+    if (!is_array($especies)) {
+        // Converte o array em uma string com vírgulas entre os valores
+        $especies = explode(',', $especies);
+
+    }
+    if (is_array($tamanho)) {
+        $tamanho = implode(',', $tamanho);
+    }
+
+    $produto = array(
+        "nome" => $nome,
+        "preco" => $preco,
+        "descricao" => $descricao,
+        "tamanho" => $tamanho,
+        "quantidade" => $quantidade,
+        "especie" => $especies,
+        "categoria" => $categoria,
+        "imagem" => $nomeImagem
+    );
+    $resultado = $colecao->insertOne($produto);
+    return $resultado->getInsertedId();
+}
+
+// DECLARAÇÃO DA FUNÇÃO PARA LIMPAR A ENTRADA
+function limparEntrada($entrada)
+{
+    if (is_array($entrada)) {
+        // se a entrada for um array, cria um novo array para armazenar os valores limpos
+        $saida = array();
+        foreach ($entrada as $chave => $valor) {
+            // remove espaços em branco no início e no fim da string
+            $saida[$chave] = is_string($valor) ? trim($valor) : $valor;
+        }
+        return $saida;
+    } else {
+        // se a entrada não for um array, remove espaços em branco no início e no fim da string
+        return is_string($entrada) ? trim($entrada) : $entrada;
+    }
+}
 ?>
+
+<!-- IMPORTA BIBLIOTECA JS BOOTSTRAP -->
 <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<?php
-include("blades/footer.php"); 
-?>
+
+<?php include("blades/footer.php"); ?>
