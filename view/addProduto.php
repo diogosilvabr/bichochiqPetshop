@@ -71,7 +71,7 @@ include("blades/header.php");
             <textarea class="form-control" id="descricao" name="descricao"></textarea>
         </div>
         <div class="form-group">
-            <label for="tamanho">Tamanho: (se houver mais de um separe-os por vírgula, exemplo: 100ml,200ml,500ml)</label>
+            <label for="tamanho">Tamanho:</label>
             <input type="text" class="form-control" id="tamanho" name="tamanho">
         </div>
         <div class="form-group">

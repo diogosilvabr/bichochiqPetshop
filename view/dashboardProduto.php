@@ -31,7 +31,6 @@
 	?>
 	<div class="container">
 		<h1 class="display-4">Gerenciamento de Produtos</h1>
-		<a class="btn btn-success" href="principal.php">Voltar ao site</a><br><br>
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs">
 			<li class="nav-item">
@@ -61,7 +60,7 @@
 					$palavraChave = limparEntrada($_POST["busca"]);
 					$resultadoBusca = buscarProdutoPorNome($palavraChave); ?>
 					<div class="table-responsive">
-						<table class="table">
+						<table class="table table-striped">
 							<thead>
 								<tr>
 									<th>ID</th>
