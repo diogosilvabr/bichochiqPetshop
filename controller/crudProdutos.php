@@ -57,15 +57,24 @@ function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade,
         throw new InvalidArgumentException('Valor inválido para ID do produto');
     }
 
+    if (!is_array($especie)) {
+        // Converte o array em uma string com vírgulas entre os valores
+        $especies = explode(',', $especie);
+
+    } 
+     if (is_array($tamanho)) {
+        $tamanho = implode(',', $tamanho);
+    } 
+
     global $colecao;
     $atualizacao = array(
         '$set' => array(
             "nome" => $nome,
             "preco" => $preco,
             "descricao" => $descricao,
-            "tamanho" => (array) $tamanho,
+            "tamanho" => $tamanho,
             "quantidade" => $quantidade,
-            "especie" => (array) $especie,
+            "especie" => $especie,
             "categoria" => $categoria,
             "imagem" => $nomeImagem
         )
