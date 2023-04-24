@@ -28,12 +28,12 @@ include("../controller/crudProdutos.php");
                                     <img src="images/<?php echo $produto->imagem; ?>" class="img-produto" alt="">
                                     <div class="sobre-card">
                                         <div class="info-card">
-                                            <div class="sobre-produto">
+                                            <div class="sobre-produto"> 
                                                 <?php echo $produto->nome; ?>
                                             </div>
                                             <div class="preco">
                                                 <p class="parcelas">Ou em 12x de R$
-                                                    <?php echo $produto->preco; ?>
+                                                    <?php echo round($produto->preco/12); ?>
                                                 </p>
                                                 <p class="preco-avista">R$
                                                     <?php echo $produto->preco; ?>
