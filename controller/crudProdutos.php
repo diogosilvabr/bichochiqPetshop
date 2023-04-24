@@ -4,7 +4,7 @@ use MongoDB\Driver\Manager;
 use MongoDB\BSON\ObjectId;
 use MongoDB\Driver\Exception\Exception;
 
-/* function criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especies, $categoria, $nomeImagem)
+function criarProduto($nome, $preco, $descricao, $tamanho, $quantidade, $especies, $categoria, $nomeImagem)
 {   
     global $colecao;
     
@@ -26,7 +26,7 @@ use MongoDB\Driver\Exception\Exception;
     );
     $resultado = $colecao->insertOne($produto);
     return $resultado->getInsertedId();
-} */
+}
 
 function buscarProdutoPorNome($nome)
 {
