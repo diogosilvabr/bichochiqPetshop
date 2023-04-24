@@ -10,6 +10,8 @@
 
 	<link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
 	<script src="../vendor/components/jquery/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 	<?php
 	// Função para limpar entrada do usuário
@@ -96,9 +98,17 @@
 											<td>
 												<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 													<input type="hidden" name="id" value="<?php echo $produto['_id']; ?>">
-													<input class="btn btn-danger" type="submit" name="excluir" value="Excluir">
+													<input class="btn btn-danger m-0" type="submit" name="excluir" value="Excluir">
 												</form>
 
+											</td>
+											<td>
+												<form method="post" action="addFavorito.php">
+													<input type="hidden" name="id" value="<?php echo $produto['_id']; ?>">
+													<button class="btn btn-primary" type="submit" name="favoritar">
+														<i class="fa fa-star"></i>
+													</button>
+												</form>	
 											</td>
 										</tr>
 								<?php

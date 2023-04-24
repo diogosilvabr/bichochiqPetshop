@@ -8,7 +8,8 @@ use MongoDB\Database;
 // Configurações de conexão com o MongoDB
 $mongoDBUri = "mongodb://localhost:27017"; // URI de conexão do MongoDB
 $mongoDBNome = "bichochique_db"; // Nome do seu banco de dados MongoDB
-$mongoDBColecao = "produtos"; // Nome da coleção onde os dados dos produtos são armazenados
+$colecaoProdutos = "produtos"; // Nome da coleção onde os dados dos produtos são armazenados
+$colecaoFavoritos = "favoritos";
 
 // Cria uma instância do cliente do MongoDB
 $cliente = new Client($mongoDBUri);
@@ -17,6 +18,9 @@ $cliente = new Client($mongoDBUri);
 $bancoDeDados = $cliente->selectDatabase($mongoDBNome);
 
 // Seleciona a coleção
-$colecao = $bancoDeDados->selectCollection($mongoDBColecao);
+$colecao = $bancoDeDados->selectCollection($colecaoProdutos);
+$colecaoFav = $bancoDeDados->selectCollection($colecaoFavoritos);
+
 global $colecao;
+global $colecaoFav;
 ?>
