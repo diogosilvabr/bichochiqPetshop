@@ -1,3 +1,8 @@
+<?php
+include("../model/database.php");
+include("../controller/crudProdutos.php");
+?>
+
 <div class="favorite-products">
   <div class="title-about">
     <div class="dashed-title"></div>
