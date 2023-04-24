@@ -1,35 +1,169 @@
 {
   "A": [
-    {
-      "nome": "Arroz"
-    },
-    {
-      "nome": "Abacaxi"
-    },
-    {
-      "nome": "Amendoim"
-    }
+    { "nome": "Adestramento" },
+    { "nome": "Alimentação" },
+    { "nome": "Acessórios" }
   ],
   "B": [
-    {
-      "nome": "Banana"
-    },
-    {
-      "nome": "Batata"
-    },
-    {
-      "nome": "Biscoito"
-    }
+    { "nome": "Banho e tosa" },
+    { "nome": "Brinquedos" },
+    { "nome": "Bebedouros" }
   ],
   "C": [
-    {
-      "nome": "Café"
-    },
-    {
-      "nome": "Cebola"
-    },
-    {
-      "nome": "Cenoura"
-    }
-  ]
-}
+    { "nome": "Caminhas" },
+    { "nome": "Coleiras" },
+    { "nome": "Comedouros" }
+  ],
+  "D": [
+    { "nome": "Dermatologia" },
+    { "nome": "Dental" },
+    { "nome": "Delivery" }
+  ],
+  "E": [
+    { "nome": "Estética" },
+    { "nome": "Emergência" },
+    { "nome": "Escovas" }
+  ],
+  "F": [
+    { "nome": "Farmácia" },
+    { "nome": "Fraldas" },
+    { "nome": "Focinheiras" }
+  ],
+  "G": [
+    { "nome": "Grooming" },
+    { "nome": "Guias" },
+    { "nome": "Guloseimas" }
+  ],
+  "H": [
+    { "nome": "Higiene" },
+    { "nome": "Hotel" },
+    { "nome": "Hospedagem" }
+  ],
+  "I": [
+    { "nome": "Internação" },
+    { "nome": "Identificação" },
+    { "nome": "Insumos" }
+  ],
+  "J": [
+    { "nome": "Jardinagem" },
+    { "nome": "Jogos" },
+    { "nome": "Jaulas" }
+  ],
+  "L": [
+    { "nome": "Leite" },
+    { "nome": "Labirinto" },
+    { "nome": "Limpeza" }
+  ],
+  "M": [
+    { "nome": "Medicina" },
+    { "nome": "Móveis" },
+    { "nome": "Moda pet" }
+  ],
+  "N": [
+    { "nome": "Nutrição" },
+    { "nome": "Ninhos" },
+    { "nome": "Naturais" }
+  ],
+  "O": [
+    { "nome": "Odontologia" },
+    { "nome": "Oncologia" },
+    { "nome": "Ossos" }
+  ],
+  "P": [
+    { "nome": "Passeios" },
+    { "nome": "Piscinas" },
+    { "nome": "Petiscos" }
+  ],
+  "Q": [
+    { "nome": "Quedas" },
+    { "nome": "Quebra-unhas" },
+    { "nome": "Quarentena" }
+  ],
+  "R": [
+    { "nome": "Rações" },
+    { "nome": "Remédios" },
+    { "nome": "Roupas" }
+  ],
+  "S": [
+    { "nome": "Saúde" },
+    { "nome": "Segurança" },
+    { "nome": "Shampoos" }
+  ],
+    "T": [
+      {
+        "nome": "Tosa"
+      },
+      {
+        "nome": "Truque"
+      },
+      {
+        "nome": "Tapete higiênico"
+      }
+    ],
+    "U": [
+      {
+        "nome": "Unhas"
+      },
+      {
+        "nome": "Umidificador de ar"
+      },
+      {
+        "nome": "Unha de gato"
+      }
+    ],
+    "V": [
+      {
+        "nome": "Vermífugo"
+      },
+      {
+        "nome": "Vacina"
+      },
+      {
+        "nome": "Vasilha"
+      }
+    ],
+    "W": [
+      {
+        "nome": "Whiskas"
+      },
+      {
+        "nome": "Whey protein para cães"
+      },
+      {
+        "nome": "Wet food"
+      }
+    ],
+    "X": [
+      {
+        "nome": "Xampu"
+      },
+      {
+        "nome": "Xícara"
+      },
+      {
+        "nome": "Xerife"
+      }
+    ],
+    "Y": [
+      {
+        "nome": "Yakisoba para cães"
+      },
+      {
+        "nome": "Yakult para pets"
+      },
+      {
+        "nome": "Yoga com pets"
+      }
+    ],
+    "Z": [
+      {
+        "nome": "Zoo"
+      },
+      {
+        "nome": "Zangão"
+      },
+      {
+        "nome": "Zíper para roupinhas"
+      }
+    ]
+  }

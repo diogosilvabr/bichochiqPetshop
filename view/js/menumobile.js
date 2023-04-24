@@ -1,7 +1,7 @@
 const menuBtn = document.querySelector('.hamburger-menu');
 const menuScreen = document.querySelector('.menu-screen');
-
 const menu = document.querySelector('.menu');
+const menuLists = document.querySelectorAll('.menu-list');
 
 // Adiciona o evento de click no botão
 menuBtn.addEventListener('click', function() {
@@ -17,15 +17,17 @@ menuScreen.addEventListener('click', function(event) {
   }
 });
 
-const menuLists = document.querySelectorAll('.menu-list');
-
 menuLists.forEach(menuList => {
   const menuItem = menuList.querySelector('.menu-item');
   const submenu = menuList.querySelector('.submenu');
 
-  //submenu.classList.remove('active');
-
   menuItem.addEventListener('click', () => {
+    menuLists.forEach(list => {
+      const listSubmenu = list.querySelector('.submenu');
+      if (listSubmenu !== submenu) {
+        listSubmenu.classList.remove('active');
+      }
+    });
     submenu.classList.toggle('active');
   });
 });
