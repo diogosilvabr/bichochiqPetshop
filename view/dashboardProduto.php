@@ -81,7 +81,7 @@
 										<tr>
 											<td><?php echo $produto['_id']; ?></td>
 											<td><?php echo $produto['nome']; ?></td>
-											<td><?php echo $produto['preco']; ?></td>
+											<td>R$ <?php echo $produto['preco']; ?></td>
 											<td><?php echo $produto['descricao']; ?></td>
 											<td><?php echo $produto['tamanho']; ?></td>
 											<td><?php echo $produto['quantidade']; ?></td>
