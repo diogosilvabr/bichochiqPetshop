@@ -129,6 +129,39 @@ if (isset($_POST["atualizar"])) {
 } else {
     /* echo "Erro ao atualizar produto"; */
 }
+
+function atualizarProduto($id, $nome, $preco, $descricao, $tamanho, $quantidade, $especie, $categoria, $nomeImagem)
+{
+    if (!preg_match('/^[0-9a-fA-F]{24}$/', $id)) {
+        throw new InvalidArgumentException('Valor inválido para ID do produto');
+    }
+
+    if (!is_array($especie)) {
+        // Converte o array em uma string com vírgulas entre os valores
+        $especies = explode(',', $especie);
+
+    } 
+     if (is_array($tamanho)) {
+        $tamanho = implode(',', $tamanho);
+    } 
+
+    global $colecao;
+    $atualizacao = array(
+        '$set' => array(
+            "nome" => $nome,
+            "preco" => $preco,
+            "descricao" => $descricao,
+            "tamanho" => $tamanho,
+            "quantidade" => $quantidade,
+            "especie" => $especie,
+            "categoria" => $categoria,
+            "imagem" => $nomeImagem
+        )
+    );
+    $resultado = $colecao->updateOne(["_id" => new MongoDB\BSON\ObjectId($id)], $atualizacao);
+    return $resultado->getModifiedCount();
+}
+
 ?>
 <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <?php

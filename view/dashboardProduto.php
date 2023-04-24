@@ -120,7 +120,41 @@
 						} else {
 							echo "Erro ao deletar o produto.";
 						}
+					}							
+					function buscarProdutoPorNome($nome)
+					{
+						try {
+							$manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+							$filter = [
+								'$or' => [
+									['nome' => ['$regex' => new MongoDB\BSON\Regex($nome, 'i')]],
+									['categoria' => ['$regex' => new MongoDB\BSON\Regex($nome, 'i')]],
+									['especie' => ['$regex' => new MongoDB\BSON\Regex($nome, 'i')]]
+								]
+							];
+							$query = new MongoDB\Driver\Query($filter);
+							$cursor = $manager->executeQuery('bichochique_db.produtos', $query);
+							$data = [];
+							foreach ($cursor as $document) {
+								$data[] = (array)$document;
+							}
+							return $data;
+						} catch (MongoDB\Driver\Exception\Exception $e) {
+							echo "Erro ao buscar produto por nome: " . $e->getMessage();
+						}
+
 					}
-							?>
+						function deletarProduto($id)
+						{
+							global $colecao;
+							if(!empty($id)) {
+								$resultado = $colecao->deleteOne(["_id" => new MongoDB\BSON\ObjectId($id)]);
+								return $resultado->getDeletedCount();
+							} else {
+								// Caso a variável $id esteja vazia
+								return 0;
+							}
+						}
+					 ?>
 			<script src="../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 			<?php include("blades/footer.php"); ?>
