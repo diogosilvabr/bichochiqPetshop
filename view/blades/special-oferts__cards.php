@@ -60,25 +60,27 @@ include("../controller/crudProdutos.php");
                                                     </h3>
                                                 </div>
 
+                                               
                                                 <div class="tamanho">
                                                     <h2>Tamanho</h2>
                                                     <form>
                                                         <label>
-                                                            <input type="radio" name="tamanho" value="100ML">
-                                                            <span class="btn">100ML</span>
+                                                            <input type="radio" name="tamanho" value="<?php echo $produto->tamanho ?>">
+                                                            <span class="btn"><?php echo $produto->tamanho ?></span>
                                                         </label>
 
                                                         <label>
-                                                            <input type="radio" name="tamanho" value="250ML">
-                                                            <span class="btn">250ML</span>
+                                                            <input type="radio" name="tamanho" value="<?php echo $produto->tamanho ?>">
+                                                            <span class="btn"><?php echo $produto->tamanho ?></span>
                                                         </label>
 
                                                         <label>
-                                                            <input type="radio" name="tamanho" value="500ML">
-                                                            <span class="btn">500ML</span>
+                                                            <input type="radio" name="tamanho" value="<?php echo $produto->tamanho ?>">
+                                                            <span class="btn"><?php echo $produto->tamanho ?></span>
                                                         </label>
                                                     </form>
                                                 </div>
+                                            
 
                                                 <div class="quantidade">
                                                     <h2>Quantidade</h2>
