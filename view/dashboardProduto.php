@@ -11,7 +11,6 @@
 	<link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
 	<script src="../vendor/components/jquery/jquery.min.js"></script>
 
-
 	<?php
 	// Função para limpar entrada do usuário
 	function limparEntrada($entrada)
@@ -30,17 +29,7 @@
 		}
 	}
 	?>
-
-	<style>
-	.container {
-		background-color: #FFC93E;
-		color: #fff; /* Define a cor do texto como branco */
-		padding: 20px;
-	}
-	</style>
-
-
-	<div class="m-5">
+	<div class="container">
 		<h1 class="display-4">Gerenciamento de Produtos</h1>
 		<a class="btn btn-success" href="principal.php">Voltar ao site</a><br><br>
 		<!-- Nav tabs -->
@@ -61,7 +50,7 @@
 						<input class="form-control" type="text" name="busca" placeholder="Digite uma palavra-chave">
 					</div>
 					<div class="form-group">
-						<input class="btn btn-primary" type="submit" name="buscar" value="Buscar" style="background-color: #FFC93E; border-color: #FFC93E;">
+						<input class="btn btn-primary" type="submit" name="buscar" value="Buscar">
 					</div>
 				</form>
 			</div>
@@ -102,13 +91,13 @@
 											<td>
 												<form method="post" action="updateProduto.php">
 													<input type="hidden" name="id" value="<?php echo $produto['_id']; ?>">
-													<input class="btn btn-success" type="submit" value="Editar" style="background-color: #1D9BF0; border-color: #1D9BF0;">
+													<input class="btn btn-success" type="submit" value="Editar">
 												</form>
 											</td>
 											<td>
 												<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 													<input type="hidden" name="id" value="<?php echo $produto['_id']; ?>">
-													<input class="btn btn-danger" type="submit" name="excluir" value="Excluir" style="background-color: #FFC93E; border-color: #FFC93E;">
+													<input class="btn btn-danger" type="submit" name="excluir" value="Excluir">
 												</form>
 
 											</td>
