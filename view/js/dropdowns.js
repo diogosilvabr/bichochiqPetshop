@@ -174,6 +174,7 @@ activeModalLogins.forEach((activeModalLogin) => {
       loginModal.classList.remove('active');
       createAccount.classList.add('active');
       formCreate.style.display = 'block';
+      formCongratulation.style.display = 'none';  
       
       const cadastrarUsuario = document.querySelector('#cadastrarUsuario');
       cadastrarUsuario.addEventListener('click', (e) => {
