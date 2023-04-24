@@ -63,8 +63,6 @@ if (isset($_POST["favoritar"])) {
 
 if (isset($_POST["favoritar"])) {
     $id = addFavorito($nome, $preco, $descricao,  $tamanho_array, $quantidade, $especie, $categoria, $nomeImagem);
-    echo "Produto favoritado com sucesso!.";
-    header("location:dashboardProduto.php");
 } else {
     /* echo "Erro ao atualizar produto"; */
 }
