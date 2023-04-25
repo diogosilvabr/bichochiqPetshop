@@ -14,9 +14,9 @@ require_once '../vendor/autoload.php'; ?>
     <hr>
     <a class="btn btn-success" href="dashboardProduto.php">Voltar</a><br><br>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="nome">Nome do Produto:</label>
-            <input type="text" class="form-control" id="nome" name="nome">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="nome do produto">
+            <label for="nome">Nome do Produto</label>
         </div>
         <div class="form-group">
             <label for="preco">Preço do Produto:</label>
