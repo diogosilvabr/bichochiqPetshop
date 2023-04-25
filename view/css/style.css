@@ -109,6 +109,10 @@ p {
     background-color: var(--azul) !important;
 }
 
+#gerenciarPagina {
+    text-decoration: none;
+}
+
 .menu-screen {
     position: fixed;
     top: 0;

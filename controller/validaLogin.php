@@ -20,7 +20,7 @@ foreach($usuariosPetshop as $user) {
 // verifica e retorna se o usuário está autenticado ou exibe erro se não estiver
 if($usuarioAutenticado) {
     echo ' Usuário autenticado!';
-    header('Location:../view/dashboardProduto.php');
+    header('Location:../view/my-requests.php');
     $_SESSION['autenticado'] = 'SIM';
 } else {
     $_SESSION['autenticado'] = 'NÃO';

@@ -14,12 +14,12 @@ include("../controller/crudProdutos.php");
   <div class="favorite-products__cards amareloOuro">
     <?php
     // Certifique-se de que $mongoDBColecao é uma instância válida de uma coleção MongoDB
-    if ($colecao instanceof MongoDB\Collection) {
-      $produtos = $colecao->find(); // Buscar todos os documentos da coleção
+    if ($colecaoFav instanceof MongoDB\Collection) {
+      $favoritos = $colecaoFav->find(); // Buscar todos os documentos da coleção
     
       // Verificar se foram encontrados documentos
-      if ($produtos) {
-        foreach ($produtos as $produto) {
+      if ($favoritos) {
+        foreach ($favoritos as $produto) {
           $tamanhos = explode(',', $produto->tamanho);
           ?>
           <div class="card">
@@ -32,7 +32,7 @@ include("../controller/crudProdutos.php");
                 <div class="preco">
                   <p class="parcelas">
                     Ou em 12x de
-                    <?php echo $produto->preco / 12; ?>
+                    <?php echo round($produto->preco/12, 2); ?>
                   </p>
                   <p class="preco-avista">
                     R$
