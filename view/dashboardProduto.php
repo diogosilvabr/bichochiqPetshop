@@ -1,5 +1,5 @@
 <?php
-include("blades/header.php");
+include("blades/header_dashboard.php");
 include("blades/session.php");
 
 // IMPORTA O ARQUIVO DE CONEXÃO E O ARQUIVO RESPONSÁVEL PELAS FUNÇÕES DO CRUD
@@ -8,6 +8,7 @@ require '../controller/crudProdutos.php';
 require_once '../vendor/autoload.php';
 ?>
 
+<link rel="stylesheet" href="css/geral.css"/>
 <link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
 <script src="../vendor/components/jquery/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -49,7 +50,7 @@ function limparEntrada($entrada)
 					<input class="form-control" type="text" name="busca" placeholder="Digite uma palavra-chave">
 				</div>
 				<div class="form-group">
-					<input class="btn mt-2" type="submit" name="buscar" value="Buscar" style="background-color: #1D9BF0; border-color: #1D9BF0;">
+					<input class="btn mt-2 amareloOuro" type="submit" name="buscar" value="Buscar">
 				</div>
 			</form>
 		</div>
@@ -62,7 +63,7 @@ function limparEntrada($entrada)
 				if (!empty($resultadoBusca)) {
 		?>
 					<div class="table-responsive">
-						<table class="table table-striped">
+						<table class="table table-striped bs-primary">
 							<thead>
 								<tr>
 									<th>ID</th>
@@ -91,7 +92,7 @@ function limparEntrada($entrada)
 										<td>
 											<form method="post" action="updateProduto.php">
 												<input type="hidden" name="id" value="<?php echo $produto['_id']; ?>">
-												<input class="btn" type="submit" value="Editar" style="background-color: #1D9BF0; border-color: #1D9BF0;">
+												<input class="btn btn-warning" type="submit" value="Editar">
 											</form>
 										</td>
 										<td>

@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    background-color: var(--azulGelo);
+    overflow-x: hidden;
+}
+
+a,
+ul,
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
+p {
+    margin: 0;
+}
+
+:root {
+    --azul: #1D9BF0;
+    --vermelho: #F04B5D;
+    --branco: #FFFFFF;
+    --verde: #65E339;
+    --amarelo: #FFC93E;
+    --marrom: #E4884A;
+    --laranjaGradiente: linear-gradient(272.7deg, #FF6B00 -6.35%, #FF9900 120.72%);
+
+    --amareloOuro: #FFB800;
+    --verdePastel: #64D650;
+
+    --azulGelo: #F0FBFF;
+    --cinza: #D9D9D9;
+    --cinzaSombra: #a5a5a5;
+    --cinzaChumbo: #5B5B5B;
+    --preto80: #232323;
+    --preto80Op: #2323233a;
+    --pretoPuro: #000000;
+
+    --shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
+    --transition: .3s ease all;
+}
+
+/*******************************
+    0.0 ESTILOS GERAIS
+********************************/
+.title-about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 0 2rem 5rem 2rem;
+}
+
+.dashed-title {
+    width: 80%;
+    height: .1rem;
+    border-bottom: 0.2rem dashed var(--cinza);
+    border-spacing: .6rem;
+    overflow: hidden;
+}
+
+.title-about h1 {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 4rem;
+    line-height: 5.4rem;
+    color: var(--amareloOuro);
+}
+
+.title-about h1 span {
+    color: var(--azul);
+}
+
+.title-about p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 3.1rem;
+    line-height: 2.4rem;
+    color: var(--preto80);
+}
+
+.amareloOuro {
+    background-color: var(--amareloOuro) !important;
+}
+
+.vermelho {
+    background-color: var(--vermelho) !important;
+}
+
+.verdePastel {
+    background-color: var(--verdePastel) !important;
+}
+
+.marrom {
+    background-color: var(--marrom) !important;
+}
+
+.azul {
+    background-color: var(--azul) !important;
+}
