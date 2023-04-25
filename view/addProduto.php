@@ -68,11 +68,10 @@ require_once '../vendor/autoload.php'; ?>
                 <option value="brinquedos">BRINQUEDOS</option>
                 <option value="cuidados">CUIDADOS</option>
             </select>
-        </div>
-        <label for="imagem">Imagem do Produto:</label>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="imagem" name="imagem">
-            <label class="custom-file-label" for="imagem">Escolher arquivo</label>
+        </div><br>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="imagem"><strong>Foto do produto</strong></label>
+            <input type="file" class="form-control" id="imagem" name="imagem" required> 
         </div><br>
         <button type="submit" name="cadastrar" class="btn btn-primary">Cadastrar</button>
     </form>

@@ -36,24 +36,17 @@ function limparEntrada($entrada)
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs">
 		<li class="nav-item">
-			<a class="nav-link active" href="#buscar" data-toggle="tab">Buscar Produtos</a>
-		</li>
-		<li class="nav-item">
 			<a class="nav-link" href="addProduto.php" data-toggle="tab">Cadastrar Produto</a>
 		</li>
 	</ul>
-
-	<div class="tab-content">
-		<div class="tab-pane active" id="buscar">
-			<form class="form-control" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-				<div class="form-group">
-					<input class="form-control" type="text" name="busca" placeholder="Digite uma palavra-chave">
+		<div class="container mb-4 mt-4 col-4 align-items-center">
+			<form class="m-2" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="busca" placeholder="buscar produto pelo nome" aria-label="buscar produto pelo nome" aria-describedby="btn-buscar">
+					<input id="btn-buscar" class="btn btn-outline azul" type="submit" name="buscar" value="Buscar">
 				</div>
-				<div class="form-group">
-					<input class="btn mt-2 amareloOuro" type="submit" name="buscar" value="Buscar">
-				</div>
-			</form>
-		</div>
+			</form>	
+		</div><hr>
 		<?php
 		// Verifica se o formulário foi enviado
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {

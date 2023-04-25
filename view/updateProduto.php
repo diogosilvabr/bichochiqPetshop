@@ -19,7 +19,7 @@ require_once '../controller/crudProdutos.php'; ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
         <div class="form-group">
             <label for="id">ID do Produto:</label>
-            <input type="text" id="id" name="id" value="<?php echo $idProduto; ?>"><br><br>
+            <input type="text" id="id" name="id" value="<?php echo $idProduto; ?>" disabled><br><br>
         </div>
         <div class="form-group">
             <label for="nome">Nome do Produto:</label>
@@ -75,13 +75,10 @@ require_once '../controller/crudProdutos.php'; ?>
                 <option value="cuidados" <?php echo ($produtos['categoria'] == 'cuidados') ? 'selected' : ''; ?>>CUIDADOS
                 </option>
             </select>
-        </div>
-        <label for="imagem">Imagem do Produto:</label>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="imagem" name="imagem"
-                value="<?php echo $produtos['imagem'] ?>">
-            <label class="custom-file-label" for="imagem"><span>(imagem ficará vazia se nenhuma for
-                    escolhida)</span></label>
+        </div><br>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="imagem"><strong>Foto do produto</strong></label>
+            <input type="file" class="form-control" id="imagem" name="imagem"value="<?php echo $produtos['imagem'] ?>" required>
         </div>
         <button type="submit" name="atualizar" class="btn btn-primary">Atualizar</button>
     </form>
