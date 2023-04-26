@@ -19,7 +19,7 @@ require_once '../controller/crudProdutos.php'; ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
         <div class="form-group">
             <label for="id">ID do Produto:</label>
-            <input type="text" id="id" name="id" value="<?php echo $idProduto; ?>" disabled><br><br>
+            <input type="text" id="id" name="id" value="<?php echo $idProduto; ?>"><br><br>
         </div>
         <div class="form-group">
             <label for="nome">Nome do Produto:</label>
@@ -78,7 +78,7 @@ require_once '../controller/crudProdutos.php'; ?>
         </div><br>
         <div class="input-group mb-3">
             <label class="input-group-text" for="imagem"><strong>Foto do produto</strong></label>
-            <input type="file" class="form-control" id="imagem" name="imagem"value="<?php echo $produtos['imagem'] ?>" required>
+            <input type="file" class="form-control" id="imagem" name="imagem" value="<?php echo $produtos['imagem']; ?>">
         </div>
         <button type="submit" name="atualizar" class="btn btn-primary">Atualizar</button>
     </form>
@@ -99,11 +99,12 @@ if (isset($_POST["atualizar"])) {
     $nomeImagem = '';
 
     // Verifica se foi enviado um arquivo de imagem
-    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] == 0) {
+    if (empty($_FILES['imagem'])) {
+        $nomeImagem = $produtos['imagem'];
+    } elseif (isset($_FILES['imagem']) && $_FILES['imagem']['error'] == 0) {
         $nomeImagem = $_FILES['imagem']['name'];
         $extensao = pathinfo($nomeImagem, PATHINFO_EXTENSION);
         $destino = 'images/' . $nomeImagem;
-
         // Verifica se o arquivo é uma imagem válida
         $extensoesPermitidas = array('jpg', 'jpeg', 'png', 'gif');
         if (in_array(strtolower($extensao), $extensoesPermitidas)) {
