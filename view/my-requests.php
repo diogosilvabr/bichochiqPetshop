@@ -121,7 +121,7 @@ include("blades/header.php");
                     <p>Bem-vindo ao <span>BichoChic</span></p>
                 </div>
                 <div class="comeback">
-                    <a href="principal.php">Voltar para a home</a>
+                    <a href="index.php">Voltar para a home</a>
                 </div>
             </div>
         </form>

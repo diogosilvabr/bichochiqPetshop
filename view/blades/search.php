@@ -2,7 +2,7 @@
 <div class="border-yellow"></div>
 <!-- css - 0.2.1 -->
 <div class="container-search">
-  <a href="principal.php" class="logo">
+  <a href="index.php" class="logo">
     <img src="imgs/Petshop_files/logo-bichochic.png" alt="" />
   </a>
 

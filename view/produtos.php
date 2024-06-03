@@ -121,7 +121,7 @@ include("blades/header.php");
                     <p>Bem-vindo ao <span>BichoChic</span></p>
                 </div>
                 <div class="comeback">
-                    <a href="principal.php">Voltar para a home</a>
+                    <a href="index.php">Voltar para a home</a>
                 </div>
             </div>
         </form>
@@ -172,7 +172,7 @@ include("blades/header.php");
         <div class="super-order">
             <div class="super-order__container">
                 <div class="super-links">
-                    <a href="principal.php">Home</a>
+                    <a href="index.php">Home</a>
                     <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.97499 6.00001C6.97499 6.13335 6.94999 6.26268 6.89999 6.38801C6.84999 6.51334 6.78332 6.61735 6.69999 6.70001L2.09999 11.3C1.91665 11.4833 1.68332 11.575 1.39999 11.575C1.11665 11.575 0.883321 11.4833 0.699987 11.3C0.516654 11.1167 0.424988 10.8833 0.424988 10.6C0.424988 10.3167 0.516654 10.0833 0.699987 9.90001L4.59999 6.00001L0.699987 2.10001C0.516654 1.91668 0.424987 1.68335 0.424987 1.40001C0.424987 1.11668 0.516654 0.883347 0.699987 0.700013C0.88332 0.51668 1.11665 0.425012 1.39999 0.425012C1.68332 0.425012 1.91665 0.51668 2.09999 0.700013L6.69999 5.30001C6.79999 5.40001 6.87099 5.50835 6.91299 5.62501C6.95499 5.74168 6.97565 5.86668 6.97499 6.00001Z" fill="#232323"/>
                     </svg>
